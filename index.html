@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rahmani Solutions</title>
+<style>
+:root{--navy:#071B3A;--navy2:#102A56;--blue:#2563EB;--cyan:#38BDF8;--green:#10B981;--purple:#8B5CF6;--canvas:#F8FAFC;--ink:#0F172A;--muted:#64748B;--line:#E2E8F0;--white:#fff;--danger:#DC2626}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--canvas);color:var(--ink);line-height:1.6;overflow-x:hidden}
+html[lang=ps] body,html[lang=fa] body{font-family:Tahoma,"Noto Naskh Arabic","Segoe UI",system-ui,sans-serif;line-height:1.9}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%}
+button,input,select,textarea{font:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;min-width:0}
+.logo-mark{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid rgba(255,255,255,.85);box-shadow:0 0 0 3px rgba(56,189,248,.25)}
+.logo small{display:block;font-size:11px;font-weight:400;color:#94A3B8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.links{display:flex;gap:22px;font-size:14.5px}
+.links a{color:#CBD5E1;position:relative;padding:4px 0;transition:color .2s}
+.links a::after{content:"";position:absolute;inset-inline-start:0;bottom:-2px;height:2px;width:0;background:var(--cyan);transition:width .3s}
+.links a:hover{color:#fff}
+.links a:hover::after{width:100%}
+.actions{display:flex;gap:8px;align-items:center}
+.lang{display:flex;gap:4px;background:rgba(255,255,255,.06);border-radius:10px;padding:3px}
+.lang-btn{border:0;background:transparent;color:#CBD5E1;padding:6px 9px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:600;transition:background .25s,color .25s,transform .2s}
+.lang-btn:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.lang-btn[aria-pressed=true]{background:var(--blue);color:#fff;box-shadow:0 4px 12px -4px rgba(37,99,235,.8)}
+.menu-btn{display:none;background:none;border:0;color:#fff;cursor:pointer;width:44px;height:44px;border-radius:10px;place-items:center}
+.menu-btn:hover{background:rgba(255,255,255,.08)}
+.mobile-menu{display:none;flex-direction:column;gap:2px;padding:8px 20px 20px;border-top:1px solid rgba(255,255,255,.08);background:var(--navy)}
+.mobile-menu a{padding:12px 0;color:#E2E8F0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu.open{display:flex}
+
+/* animated buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid transparent;cursor:pointer;min-height:44px;white-space:nowrap;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,color .25s,border-color .25s}
+.btn::after{content:"";position:absolute;top:0;inset-inline-start:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);transition:inset-inline-start .7s ease;pointer-events:none}
+.btn:hover::after{inset-inline-start:125%}
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+.btn:active{transform:scale(.96)}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.btn .arr{display:inline-block;transition:transform .25s}
+.btn:hover .arr{transform:translateX(4px)}
+html[dir=rtl] .btn:hover .arr{transform:translateX(-4px)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 20px -8px rgba(37,99,235,.7)}
+.btn-primary:hover{background:#1d4ed8;box-shadow:0 14px 28px -10px rgba(37,99,235,.9)}
+.btn-green{background:var(--green);color:#fff;box-shadow:0 8px 20px -8px rgba(16,185,129,.7)}
+.btn-green:hover{background:#059669;box-shadow:0 14px 28px -10px rgba(16,185,129,.9)}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 8px 20px -8px rgba(37,211,102,.7)}
+.btn-wa:hover{background:#1ebe5b}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-line{border-color:var(--line);color:var(--ink);background:#fff}
+.btn-line:hover{border-color:var(--blue);color:var(--blue);box-shadow:0 10px 22px -12px rgba(37,99,235,.7)}
+.pulse{animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(37,99,235,.45)}50%{box-shadow:0 0 0 10px rgba(37,99,235,0)}}
+.btn-sm{min-height:40px;padding:9px 16px;font-size:14px}
+
+/* hero */
+.hero{background:radial-gradient(1200px 500px at 85% -10%,rgba(56,189,248,.18),transparent 60%),radial-gradient(900px 400px at -10% 110%,rgba(139,92,246,.18),transparent 60%),var(--navy);color:#fff;overflow:hidden;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:64px 0 80px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(250,204,21,.12);border:1px solid rgba(250,204,21,.35);color:#FDE68A;font-size:13px;font-weight:600}
+h1{font-size:clamp(32px,5.2vw,60px);line-height:1.1;font-weight:800;margin:20px 0 18px;letter-spacing:-.01em}
+h1 .accent{display:block;background:linear-gradient(90deg,var(--cyan),#7DD3FC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:#CBD5E1;font-size:17px;max-width:520px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.stage{position:relative;min-height:380px;display:grid;place-items:center}
+.orb{width:min(300px,70vw);aspect-ratio:1;border-radius:50%;background:conic-gradient(from 0deg,var(--blue),var(--cyan),var(--purple),var(--blue));opacity:.25;filter:blur(2px);animation:spin 18s linear infinite;position:absolute}
+.core{width:min(180px,46vw);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;position:relative;z-index:1;animation:bob 4s ease-in-out infinite;background:none;box-shadow:0 0 0 6px rgba(56,189,248,.18),0 30px 60px -20px rgba(37,99,235,.6)}
+.core img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid rgba(255,255,255,.85)}
+.core::before,.core::after{content:"";position:absolute;inset:-16px;border-radius:50%;border:2px solid var(--cyan);opacity:0;animation:ring 2.8s ease-out infinite;pointer-events:none}
+.core::after{animation-delay:1.4s}
+.chip{position:absolute;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(16,42,86,.75);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(6px);font-size:13px;box-shadow:0 12px 30px -12px rgba(0,0,0,.5);animation:float 6s ease-in-out infinite;z-index:2;white-space:nowrap;transition:transform .3s}
+.chip:hover{transform:scale(1.06)}
+.chip b{display:block;font-size:14px}
+.chip span{color:#94A3B8;font-size:12px}
+.ico{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:700;flex-shrink:0;font-size:13px}
+.c1{top:0;inset-inline-start:0;animation-delay:0s}.c2{top:28%;inset-inline-start:-4%;animation-delay:-1.5s}.c3{bottom:20%;inset-inline-start:2%;animation-delay:-3s}
+.c4{top:4%;inset-inline-end:0;animation-delay:-2s}.c5{top:38%;inset-inline-end:-6%;animation-delay:-4s}.c6{bottom:6%;inset-inline-end:4%;animation-delay:-5s}
+
+/* sections */
+section.block{padding:72px 0;position:relative}
+.eyebrow{display:inline-block;padding:5px 14px;border-radius:999px;background:#EFF6FF;color:var(--blue);font-size:13px;font-weight:600;margin-bottom:12px}
+.head{text-align:center;max-width:680px;margin:0 auto 44px}
+h2{font-size:clamp(26px,3.6vw,38px);color:var(--navy);font-weight:800;line-height:1.25}
+.head p{color:var(--muted);margin-top:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;box-shadow:0 1px 2px rgba(15,23,42,.04);transition:transform .3s,box-shadow .3s,border-color .3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 22px 40px -22px rgba(15,23,42,.35);border-color:#CBD5E1}
+.tile{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:18px;font-weight:700;margin-bottom:18px;transition:transform .3s}
+.card:hover .tile{transform:scale(1.08) rotate(-3deg)}
+.card h3{font-size:18px;color:var(--navy);margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px;flex:1}
+.card .more{margin-top:16px;font-weight:600;font-size:15px;display:inline-flex;gap:6px;align-items:center}
+.card .more .arr{transition:transform .25s}
+.card:hover .more .arr{transform:translateX(4px)}
+html[dir=rtl] .card:hover .more .arr{transform:translateX(-4px)}
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.step{text-align:center;padding:0 6px}
+.step .circle{width:70px;height:70px;border-radius:50%;margin:0 auto 14px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-size:22px;box-shadow:0 8px 20px -12px rgba(15,23,42,.4);transition:transform .3s,background .3s}
+.step:hover .circle{transform:translateY(-6px);background:#EFF6FF}
+.step h4{font-size:15px;color:var(--navy);margin-bottom:6px}
+.step p{font-size:13.5px;color:var(--muted)}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 22px;position:relative;transition:transform .3s,box-shadow .3s}
+.plan:hover{transform:translateY(-6px);box-shadow:0 20px 40px -24px rgba(15,23,42,.4)}
+.plan.featured{border:2px solid var(--blue)}
+.tag{position:absolute;top:-12px;inset-inline-end:16px;color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px;background:var(--blue)}
+.plan h3{font-size:18px;color:var(--navy)}
+.plan .sub{color:var(--muted);font-size:14px}
+.plan .price{font-size:34px;font-weight:800;color:var(--navy);margin:16px 0 4px;direction:ltr;text-align:start}
+.plan .price small{font-size:14px;color:var(--muted);font-weight:500}
+.plan ul{list-style:none;margin:16px 0 22px;display:grid;gap:9px}
+.plan li{font-size:14.5px;color:#334155;display:flex;gap:9px}
+.plan li::before{content:"✓";color:var(--green);font-weight:700}
+.plan .btn{width:100%}
+.note{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px}
+.feat div.item{display:flex;gap:12px;align-items:flex-start}
+.feat .ico{width:42px;height:42px;font-size:18px}
+.feat b{display:block;color:var(--navy);font-size:15px}
+.feat span{color:var(--muted);font-size:13.5px}
+.panel{background:linear-gradient(160deg,var(--navy),var(--navy2));border-radius:22px;color:#fff;padding:40px 28px;text-align:center;min-height:300px;display:grid;place-items:center}
+.empty{background:#fff;border:1px dashed #CBD5E1;border-radius:18px;padding:36px 24px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--navy);font-size:17px;margin-bottom:6px}
+.cta{background:linear-gradient(120deg,var(--blue),var(--purple));color:#fff;border-radius:24px;padding:48px 28px;text-align:center}
+.cta h2{color:#fff}
+.cta p{color:#DBEAFE;margin-top:8px}
+.cta .hero-cta{justify-content:center}
+.cts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:0 auto}
+.cts a.card{text-align:start}
+.copy-btn{margin-top:10px;align-self:flex-start;padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--navy);font-size:13px;font-weight:600;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+.copy-btn:hover{transform:translateY(-2px);border-color:var(--blue);background:#EFF6FF}
+.copy-btn:active{transform:scale(.96)}
+.wrap-narrow{max-width:520px;margin:0 auto}
+.acc-tabs{display:flex;gap:8px}
+.acc-tabs .btn{flex:1}
+.form{display:grid;gap:14px}
+.form label{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.form input,.form select,.form textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(37,99,235,.15)}
+.form textarea{min-height:100px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:var(--danger);font-size:13.5px;margin-top:4px}
+.msg{font-size:14px;color:var(--muted)}
+.msg.ok{color:#047857}
+.out{white-space:pre-wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;font-size:14.5px;line-height:1.75;min-height:120px;color:var(--ink)}
+.tabs{display:flex;gap:8px;margin:24px 0 12px;flex-wrap:wrap}
+.tabs button{padding:9px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:14px;transition:transform .2s,background .2s,color .2s}
+.tabs button:hover{transform:translateY(-2px);border-color:var(--blue)}
+.tabs button[aria-selected=true]{background:var(--blue);color:#fff;border-color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+/* panels (opened by cards, closed with the X button) */
+[data-panel]{position:relative;background:#fff}
+.panel-close{position:absolute;top:14px;inset-inline-end:14px;z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;display:grid;place-items:center;box-shadow:0 6px 16px -8px rgba(15,23,42,.4);transition:transform .25s,background .25s,color .25s,border-color .25s}
+.panel-close:hover,.panel-close:focus-visible{background:var(--danger);color:#fff;border-color:var(--danger);transform:rotate(90deg) scale(1.08)}
+.panel-close:active{transform:rotate(90deg) scale(.92)}
+.panel-close .ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--cyan);opacity:0;animation:ring 2.4s ease-out infinite;pointer-events:none}
+.ai-chat{border:1px solid var(--line);border-radius:18px;background:var(--canvas);display:flex;flex-direction:column;height:min(560px,70vh)}
+.msgs{flex:1;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.m{max-width:85%;padding:12px 14px;border-radius:14px;font-size:14.5px;line-height:1.7;white-space:pre-wrap;word-wrap:break-word;animation:pop .35s ease both}
+.m.u{align-self:flex-end;background:var(--blue);color:#fff}
+.m.a{align-self:flex-start;background:#fff;border:1px solid var(--line);color:var(--ink)}
+html[dir=rtl] .m.u{align-self:flex-start}
+html[dir=rtl] .m.a{align-self:flex-end}
+.ai-form{display:flex;gap:10px;padding:12px;border-top:1px solid var(--line);background:#fff;border-radius:0 0 18px 18px;align-items:flex-end}
+.ai-form textarea{flex:1;min-height:48px;max-height:140px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;font-size:15px;resize:vertical}
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center;justify-content:space-between}
+.status{font-size:13px;color:var(--muted)}
+
+/* floating + toast */
+.wa-float{position:fixed;inset-inline-end:16px;bottom:16px;z-index:90;background:#25D366;color:#fff;padding:12px 18px;border-radius:999px;font-weight:700;box-shadow:0 10px 25px rgba(0,0,0,.25);display:flex;align-items:center;gap:8px;min-height:44px;animation:pulse 2.6s infinite;transition:transform .25s}
+.wa-float:hover{transform:translateY(-3px) scale(1.04)}
+.wa-float.wa-hide{display:none}
+#toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:14px 18px;border-radius:12px;max-width:92vw;z-index:99;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.3);line-height:1.6;animation:pop .35s ease both}
+#toast a{color:#25D366;font-weight:700;text-decoration:underline}
+
+/* footer */
+footer{background:var(--navy);color:#CBD5E1;padding:56px 0 24px;margin-top:72px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+footer h5{color:#fff;margin-bottom:14px;font-size:15px}
+footer a.fl{display:block;color:#94A3B8;font-size:14px;margin-bottom:9px;transition:color .2s,transform .2s}
+footer a.fl:hover{color:var(--cyan);transform:translateX(3px)}
+html[dir=rtl] footer a.fl:hover{transform:translateX(-3px)}
+.news{display:flex;gap:8px;margin-top:6px}
+.news input{flex:1;min-width:0;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font-size:14px}
+.news input::placeholder{color:#64748B}
+.copy{border-top:1px solid rgba(255,255,255,.08);margin-top:36px;padding-top:20px;font-size:13px;color:#94A3B8;text-align:center}
+
+
+/* quran */
+.juz-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:12px}
+.juz-btn{position:relative;overflow:hidden;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 6px;cursor:pointer;display:grid;gap:2px;justify-items:center;animation:fadeUp .6s ease both;transition:transform .25s,box-shadow .25s,border-color .25s,background .3s,color .3s}
+.juz-btn::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(56,189,248,.35),transparent 60%);opacity:0;transition:opacity .3s}
+.juz-btn:hover{transform:translateY(-4px) scale(1.04);border-color:var(--cyan);box-shadow:0 14px 26px -14px rgba(37,99,235,.7)}
+.juz-btn:hover::after{opacity:1}
+.juz-btn:active{transform:scale(.95)}
+.juz-btn.on{background:linear-gradient(135deg,var(--blue),var(--purple));color:#fff;border-color:transparent;box-shadow:0 14px 26px -12px rgba(37,99,235,.9)}
+.juz-n{font-size:20px;font-weight:800;line-height:1}
+.juz-l{font-size:11px;opacity:.75}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.quran-panel{margin-top:28px;padding:24px;animation:pop .4s ease both}
+.qhead{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.qhead h3{color:var(--navy);font-size:20px}
+.qctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.qctl select{padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:#fff;font-size:14px}
+.verses{display:grid;gap:12px;margin-top:18px}
+.verse{background:var(--canvas);border:1px solid var(--line);border-radius:14px;padding:16px;animation:pop .4s ease both}
+.verse.now{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.verse .ar{font-size:24px;line-height:2;text-align:right;direction:rtl;color:var(--ink)}
+.verse .tr{font-size:14px;color:var(--muted);margin-top:6px}
+.verse .vb{margin-top:8px}
+.playing-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);margin-inline-end:6px;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.25}}
+@media(max-width:1024px){.juz-grid{grid-template-columns:repeat(6,1fr)}}
+@media(max-width:600px){.juz-grid{grid-template-columns:repeat(5,1fr);gap:8px}.juz-n{font-size:17px}.verse .ar{font-size:20px}}
+
+/* certificate: landscape */
+.cert-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.lbl{display:block;font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px}
+.cert{width:100%;min-width:640px;max-width:980px;aspect-ratio:1.414/1;margin:0 auto;border:8px double var(--navy);border-radius:10px;padding:26px 34px;background:#fff;color:var(--ink);text-align:center;display:flex;flex-direction:column;justify-content:space-between;box-sizing:border-box;animation:pop .5s ease both}
+.c-company{font-size:24px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}
+.c-title{font-size:30px;font-weight:700;color:var(--blue);margin-top:4px}
+.c-mid{display:flex;align-items:center;justify-content:center;gap:28px;flex:1}
+.c-photo{width:110px;height:110px;border-radius:50%;object-fit:cover;border:3px solid var(--navy);flex-shrink:0}
+.c-given{font-size:15px;color:var(--muted)}
+.c-name{font-size:30px;font-weight:800;color:var(--ink);border-bottom:2px solid var(--line);display:inline-block;padding:0 18px 4px;margin:6px 0}
+.c-course{font-size:20px;font-weight:700;color:var(--navy);margin-top:6px}
+.c-date{font-size:14px;color:var(--muted);margin-top:6px}
+.c-foot{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:end}
+.c-sig img{max-height:60px;max-width:180px;object-fit:contain;display:block;margin:0 auto}
+.c-line{border-top:1px solid var(--muted);margin-top:4px;padding-top:4px;font-size:13px;min-width:160px;margin-inline:auto}
+.c-stamp img{max-height:110px;max-width:140px;object-fit:contain;display:block;margin:0 auto}
+.c-no{font-size:12px;color:var(--muted)}
+.c-issued{font-size:13px;color:var(--muted);margin-top:4px}
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes ring{0%{transform:scale(.8);opacity:.7}100%{transform:scale(1.25);opacity:0}}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+
+/* responsive */
+@media (max-width:1100px){.links{gap:14px;font-size:13.5px}}
+@media (max-width:1024px){
+  .grid4,.plans{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:30px}
+  .hero-grid{grid-template-columns:1fr;text-align:start}
+  .stage{min-height:340px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .cts{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .links,.actions .hide-sm{display:none}
+  .menu-btn{display:grid}
+  .split{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .wrap{padding:0 16px}
+  .grid4,.plans,.feat,.cts,.two{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .hero-cta .btn{flex:1 1 100%}
+  .chip{font-size:12px;padding:8px 10px}
+  .chip b{font-size:13px}
+  .c2,.c5{display:none}
+  .fgrid{grid-template-columns:1fr}
+  .news{flex-direction:column}
+  .news .btn{width:100%}
+  .cta{padding:36px 20px}
+  .logo small{display:none}
+  .lang-btn{padding:6px 7px;font-size:12px}
+}
+@media print{body *{visibility:hidden}#docOut,#docOut *{visibility:visible}#docOut{position:absolute;left:0;top:0;width:100%;border:0}#certOut,#certOut *{visibility:visible}@page{size:A4 landscape;margin:0}#certOut{position:absolute;left:0;top:0;width:100vw;height:100vh;max-width:none;min-width:0;aspect-ratio:auto;border-radius:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo" aria-label="Rahmani Solutions">
+      <img class="logo-mark" src="data:image/jpeg;base64,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" alt="Rahmani Solutions">
+      <span>Rahmani Solutions<small data-i18n="tagline">Your Problems, Our Smart Solutions.</small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#top" data-i18n="nav_home">Home</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#pricing" data-i18n="nav_pricing">Pricing</a><a href="#quran" data-i18n="nav_quran">Quran</a><a href="#certificate" data-i18n="nav_cert">Certificate</a>
+      <a href="#how-it-works" data-i18n="nav_how">How It Works</a>
+      <a href="#ceo" data-i18n="nav_about">About</a>
+      <a href="#blog" data-i18n="nav_blog">Blog</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="actions">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="lang-btn" data-lang="ps" aria-pressed="false">پښتو</button>
+        <button type="button" class="lang-btn" data-lang="fa" aria-pressed="false">دری</button>
+      </div>
+      <a href="#account" class="btn btn-ghost btn-sm hide-sm" data-i18n="nav_signin">Sign in</a>
+      <a href="#account" class="btn btn-primary btn-sm hide-sm" data-i18n="nav_signup">Sign up</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav" data-i18n-aria="menu_open" aria-label="Open menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-menu" id="mnav" aria-label="Mobile">
+    <a href="#top" data-i18n="nav_home">Home</a><a href="#services" data-i18n="nav_services">Services</a><a href="#pricing" data-i18n="nav_pricing">Pricing</a><a href="#quran" data-i18n="nav_quran">Quran</a><a href="#certificate" data-i18n="nav_cert">Certificate</a>
+    <a href="#how-it-works" data-i18n="nav_how">How It Works</a><a href="#ceo" data-i18n="nav_about">About</a><a href="#blog" data-i18n="nav_blog">Blog</a>
+    <a href="#contact" data-i18n="nav_contact">Contact</a><a href="#account" data-i18n="nav_signin">Sign in</a><a href="#account" data-i18n="nav_signup">Sign up</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge" data-i18n="hero_badge">All-in-one digital solutions</span>
+      <h1><span data-i18n="hero_t1">Your Problems,</span><span class="accent" data-i18n="hero_t2">Our Smart Solutions.</span></h1>
+      <p class="lead" data-i18n="hero_lead">From AI assistance to web development, business management, and student support, Rahmani Solutions helps you solve problems, save time, and reach your goals.</p>
+      <div class="hero-cta">
+        <a href="#account" class="btn btn-green pulse"><span data-i18n="hero_cta1">Get Started Now</span> <span class="arr">→</span></a>
+        <a href="#services" class="btn btn-ghost"><span data-i18n="hero_cta2">Explore Services</span></a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="orb"></div>
+      <div class="core"><img src="data:image/jpeg;base64,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" alt=""></div>
+      <div class="chip c1"><div class="ico" style="background:#7C3AED">AI</div><div><b data-i18n="chip_ai">AI Assistant</b><span data-i18n="chip_ai_s">Solutions in seconds</span></div></div>
+      <div class="chip c2"><div class="ico" style="background:#2563EB">&lt;/&gt;</div><div><b data-i18n="chip_web">Web Development</b><span data-i18n="chip_web_s">Build your dream</span></div></div>
+      <div class="chip c3"><div class="ico" style="background:#059669">⚙</div><div><b data-i18n="chip_dig">Digital Services</b><span data-i18n="chip_dig_s">Design · Translate · More</span></div></div>
+      <div class="chip c4"><div class="ico" style="background:#8B5CF6">CV</div><div><b data-i18n="chip_cv">CV &amp; Career</b><span data-i18n="chip_cv_s">Get hired faster</span></div></div>
+      <div class="chip c5"><div class="ico" style="background:#10B981">▣</div><div><b data-i18n="chip_biz">Business Solutions</b><span data-i18n="chip_biz_s">Manage &amp; grow</span></div></div>
+      <div class="chip c6"><div class="ico" style="background:#F59E0B">🎓</div><div><b data-i18n="chip_stu">Student Support</b><span data-i18n="chip_stu_s">Learn · Solve · Succeed</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="services">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="svc_eyebrow">Our Services</span><h2 data-i18n="svc_h">What Can We Do For You?</h2><p data-i18n="svc_p">We offer a wide range of digital services to help you solve problems, improve productivity, and reach your goals.</p></div>
+    <div class="grid4">
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED)">AI</div><h3 data-i18n="svc_ai_n">AI Problem Solver</h3><p data-i18n="svc_ai_d">Get help with writing, translation, ideas, research and more using AI.</p><a class="more" style="color:#7C3AED" href="#ai-tool"><span data-i18n="btn_open_ai">Open AI Assistant</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#2563EB,#38BDF8)">&lt;/&gt;</div><h3 data-i18n="svc_fix_n">Website Fixing</h3><p data-i18n="svc_fix_d">Fix errors, improve performance, update your website.</p><a class="more" style="color:#2563EB" href="#svc-request" data-svc="1"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#10B981,#059669)">&lt;/&gt;</div><h3 data-i18n="svc_web_n">Web Development</h3><p data-i18n="svc_web_d">Custom websites, web apps, landing pages and more.</p><a class="more" style="color:#059669" href="#svc-request" data-svc="2"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#F59E0B,#EA580C)">DB</div><h3 data-i18n="svc_db_n">Database Solutions</h3><p data-i18n="svc_db_d">Design, fix and manage your database systems.</p><a class="more" style="color:#EA580C" href="#svc-request" data-svc="3"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#EC4899,#DB2777)">CV</div><h3 data-i18n="svc_cv_n">CV &amp; Job Assistant</h3><p data-i18n="svc_cv_d">Build professional CVs, cover letters and job applications.</p><a class="more" style="color:#DB2777" href="#cv-tool"><span data-i18n="btn_open_cv">Open CV Builder</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#14B8A6,#0D9488)">🎓</div><h3 data-i18n="svc_stu_n">Student Problem Solver</h3><p data-i18n="svc_stu_d">Get help with assignments, programming, math and more.</p><a class="more" style="color:#0D9488" href="#svc-request" data-svc="5"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#6366F1,#4F46E5)">▣</div><h3 data-i18n="svc_biz_n">Business Management</h3><p data-i18n="svc_biz_d">Systems for pharmacy, clinic, school, inventory and accounting.</p><a class="more" style="color:#4F46E5" href="#svc-request" data-svc="6"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+      <article class="card reveal"><div class="tile" style="background:linear-gradient(135deg,#3B82F6,#1D4ED8)">🎨</div><h3 data-i18n="svc_mkt_n">Digital Services Marketplace</h3><p data-i18n="svc_mkt_d">Graphic design, translation, content writing and more.</p><a class="more" style="color:#1D4ED8" href="#svc-request" data-svc="7"><span data-i18n="btn_request">Request Service</span> <span class="arr">→</span></a></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="cv-tool" data-panel hidden>
+  <button type="button" class="panel-close" data-close data-i18n-aria="close_panel" aria-label="Close this section"><span class="ring"></span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></button>
+  <div class="wrap">
+    <div class="head"><span class="eyebrow" data-i18n="cv_eyebrow">CV &amp; Job Assistant</span><h2 data-i18n="cv_h">Create your CV, cover letter and job application</h2><p data-i18n="cv_p">Fill in the form. Your documents are created only from what you enter. Review everything before you send it.</p></div>
+    <form id="cvForm" class="card form" novalidate>
+      <div class="two">
+        <div><label for="f_name" data-i18n="f_name">Full name *</label><input id="f_name" autocomplete="name"></div>
+        <div><label for="f_job" data-i18n="f_job">Job title you want *</label><input id="f_job" data-i18n-ph="ph_job" placeholder="e.g. Database Administrator"></div>
+        <div><label for="f_email" data-i18n="f_email">Email</label><input id="f_email" type="email" autocomplete="email"></div>
+        <div><label for="f_phone" data-i18n="f_phone">Phone</label><input id="f_phone" type="tel" autocomplete="tel"></div>
+        <div><label for="f_city" data-i18n="f_city">City</label><input id="f_city"></div>
+        <div><label for="f_company" data-i18n="f_company">Company you are applying to (optional)</label><input id="f_company"></div>
+      </div>
+      <div><label for="f_summary" data-i18n="f_summary">Short summary about you</label><textarea id="f_summary" data-i18n-ph="ph_sum" placeholder="Two or three sentences about your skills and goals"></textarea></div>
+      <div><label for="f_exp" data-i18n="f_exp">Work experience (one job per line: Role | Company | Years | What you did)</label><textarea id="f_exp" data-i18n-ph="ph_exp" placeholder="Database Developer | ABC Company | 2021-2024 | Built and maintained PostgreSQL databases"></textarea></div>
+      <div><label for="f_edu" data-i18n="f_edu">Education (one per line)</label><textarea id="f_edu" data-i18n-ph="ph_edu" placeholder="Bachelor of Computer Science, University name, year"></textarea></div>
+      <div><label for="f_skills" data-i18n="f_skills">Skills (separate with commas)</label><input id="f_skills" data-i18n-ph="ph_skills" placeholder="SQL, Python, Communication, Teamwork"></div>
+      <div><label for="f_motiv" data-i18n="f_motiv">Why you want this job (used in the cover letter)</label><textarea id="f_motiv"></textarea></div>
+      <div><button type="submit" class="btn btn-primary" data-i18n="cv_submit">Create CV and cover letter</button></div>
+      <p id="cvErr" class="err" role="alert"></p>
+    </form>
+    <div id="cvResult" hidden style="margin-top:28px">
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" aria-selected="true" data-doc="cv" data-i18n="tab_cv">CV</button>
+        <button type="button" role="tab" aria-selected="false" data-doc="cl" data-i18n="tab_cl">Cover letter</button>
+        <button type="button" role="tab" aria-selected="false" data-doc="job" data-i18n="tab_job">Job application</button>
+      </div>
+      <div id="docOut" class="out"></div>
+      <div class="row">
+        <button type="button" class="btn btn-line" id="copyBtn" data-i18n="copy">Copy text</button>
+        <button type="button" class="btn btn-green" id="printBtn" data-i18n="print">Print or save as PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="ai-tool" data-panel hidden style="background:#fff">
+  <button type="button" class="panel-close" data-close data-i18n-aria="close_panel" aria-label="Close this section"><span class="ring"></span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></button>
+  <div class="wrap">
+    <div class="head"><span class="eyebrow" data-i18n="ai_eyebrow">AI Problem Solver</span><h2 data-i18n="ai_h">Ask the AI assistant</h2><p data-i18n="ai_p">Writing, translation, summaries, ideas, business plans, spreadsheet formulas, programming and SQL help. AI can make mistakes, so review important answers before you use them.</p></div>
+    <div class="ai-chat">
+      <div class="msgs" id="aiMsgs" aria-live="polite"><div class="m a" data-i18n="ai_hello">Hello. What problem can I help you solve today?</div></div>
+      <form id="aiForm" class="ai-form">
+        <textarea id="aiInput" data-i18n-ph="ai_ph" placeholder="Type your question..." data-i18n-aria="ai_label" aria-label="Your question"></textarea>
+        <button class="btn btn-primary" id="aiSend" type="submit" disabled data-i18n="ai_send">Send</button>
+      </form>
+    </div>
+    <div class="bar">
+      <span class="status" id="aiStatus" role="status">…</span>
+      <div class="row" style="margin:0">
+        <button type="button" class="btn btn-line btn-sm" id="aiNew" data-i18n="ai_new">New conversation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="svc-request" data-panel hidden style="background:#fff">
+  <button type="button" class="panel-close" data-close data-i18n-aria="close_panel" aria-label="Close this section"><span class="ring"></span><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" fill="none"/></svg></button>
+  <div class="wrap">
+    <div class="head"><span class="eyebrow" data-i18n="req_eyebrow">Request a Service</span><h2 data-i18n="req_h">Send your request</h2><p data-i18n="req_p">Choose a service and describe the problem. Your request opens in WhatsApp addressed to Rahmani Solutions. You receive a quotation before any payment.</p></div>
+    <form id="reqForm" class="card form" novalidate>
+      <div class="two">
+        <div><label for="r_name" data-i18n="r_name">Full name *</label><input id="r_name" autocomplete="name"></div>
+        <div><label for="r_phone" data-i18n="r_phone">Phone or WhatsApp</label><input id="r_phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div><label for="r_service" data-i18n="r_service">Service *</label>
+        <select id="r_service">
+          <option value="0" data-i18n="svc_ai_n">AI Problem Solver</option>
+          <option value="1" data-i18n="svc_fix_n">Website Fixing</option>
+          <option value="2" data-i18n="svc_web_n">Web Development</option>
+          <option value="3" data-i18n="svc_db_n">Database Solutions</option>
+          <option value="4" data-i18n="svc_cv_n">CV &amp; Job Assistant</option>
+          <option value="5" data-i18n="svc_stu_n">Student Problem Solver</option>
+          <option value="6" data-i18n="svc_biz_n">Business Management</option>
+          <option value="7" data-i18n="svc_mkt_n">Digital Services Marketplace</option>
+        </select>
+      </div>
+      <div><label for="r_details" data-i18n="r_details">Describe your problem or request *</label><textarea id="r_details" data-i18n-ph="ph_details" placeholder="What do you need, and what is the deadline or budget?"></textarea></div>
+      <div class="row" style="margin:0">
+        <button type="submit" class="btn btn-wa" data-i18n="r_submit">Send request on WhatsApp</button>
+      </div>
+      <div id="reqMsg" role="status" class="msg"></div>
+    </form>
+  </div>
+</section>
+
+<section class="block" id="how-it-works" style="background:#fff">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="how_eyebrow">Process</span><h2 data-i18n="how_h">How It Works</h2><p data-i18n="how_p">Getting your solution is easy. Just follow these simple steps.</p></div>
+    <div class="steps">
+      <div class="step reveal"><div class="circle">📄</div><h4 data-i18n="how1">1. Submit Your Problem</h4><p data-i18n="how1d">Describe your issue and upload files if needed.</p></div>
+      <div class="step reveal"><div class="circle">🏷️</div><h4 data-i18n="how2">2. Receive a Quote</h4><p data-i18n="how2d">We review your request and send a price and time estimate.</p></div>
+      <div class="step reveal"><div class="circle">💳</div><h4 data-i18n="how3">3. Make Payment</h4><p data-i18n="how3d">Pay through our secure checkout once you approve the quote.</p></div>
+      <div class="step reveal"><div class="circle">⚙️</div><h4 data-i18n="how4">4. We Work on It</h4><p data-i18n="how4d">Our team or AI tools work on your problem and keep you informed.</p></div>
+      <div class="step reveal"><div class="circle">✅</div><h4 data-i18n="how5">5. Get Your Solution</h4><p data-i18n="how5d">Download completed work from your dashboard.</p></div>
+      <div class="step reveal"><div class="circle">⭐</div><h4 data-i18n="how6">6. Rate &amp; Review</h4><p data-i18n="how6d">Share feedback to help us improve.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="pricing">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="price_eyebrow">Pricing</span><h2 data-i18n="price_h">Simple &amp; Transparent Pricing</h2><p data-i18n="price_p">Choose the plan that fits your needs. Prices are examples and can be changed by the administrator.</p></div>
+    <div class="plans">
+      <div class="plan reveal"><h3 data-i18n="pl_basic">Basic</h3><div class="sub" data-i18n="pl_basic_s">For small tasks</div><div class="price">$5 <small data-i18n="per_service">/ service</small></div><ul><li data-i18n="f_basic1">Basic support</li><li data-i18n="f_basic2">1-day delivery</li><li data-i18n="f_basic3">Email support</li></ul><a href="#account" class="btn btn-line" data-i18n="get_started">Get Started</a></div>
+      <div class="plan featured reveal"><span class="tag" data-i18n="popular">Most Popular</span><h3 data-i18n="pl_std">Standard</h3><div class="sub" data-i18n="pl_std_s">For regular users</div><div class="price">$15 <small data-i18n="per_service">/ service</small></div><ul><li data-i18n="f_std1">Priority support</li><li data-i18n="f_std2">Faster delivery (12–24h)</li><li data-i18n="f_std3">File attachments</li></ul><a href="#account" class="btn btn-primary" data-i18n="get_started">Get Started</a></div>
+      <div class="plan reveal"><h3 data-i18n="pl_prem">Premium</h3><div class="sub" data-i18n="pl_prem_s">For professionals &amp; businesses</div><div class="price">$30 <small data-i18n="per_service">/ service</small></div><ul><li data-i18n="f_prem1">VIP support</li><li data-i18n="f_prem2">Fast delivery (6–12h)</li><li data-i18n="f_prem3">Unlimited revisions</li></ul><a href="#account" class="btn btn-line" data-i18n="get_started">Get Started</a></div>
+      <div class="plan featured reveal"><span class="tag" style="background:var(--green)" data-i18n="best">Best Value</span><h3 data-i18n="pl_mon">Monthly Plan</h3><div class="sub" data-i18n="pl_mon_s">For frequent users</div><div class="price">$9.99 <small data-i18n="per_month">/ month</small></div><ul><li data-i18n="f_mon1">Access to AI tools</li><li data-i18n="f_mon2">Discounted prices</li><li data-i18n="f_mon3">Priority support</li></ul><a href="#pricing" class="btn btn-primary" data-i18n="view_details">View Details</a></div>
+    </div>
+    <p class="note" data-i18n="price_note">Subscriptions will be enabled after recurring billing is implemented and tested.</p>
+  </div>
+</section>
+
+<section class="block" id="ceo" style="background:#fff">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="ceo_eyebrow">Our Leadership</span>
+      <h2 style="text-align:start" data-i18n="ceo_name">Abdullah Rahmani</h2>
+      <p style="color:var(--blue);font-weight:600;margin-top:4px" data-i18n="ceo_title">Chief Executive Officer (CEO)</p>
+      <p style="color:var(--muted);margin-top:14px" data-i18n="ceo_p">Leading Rahmani Solutions in delivering practical, affordable digital solutions for people, students, job seekers, and businesses. Reach out directly for quotations, partnerships, or support.</p>
+      <div class="hero-cta" style="margin-top:26px"><a href="#contact" class="btn btn-primary" data-i18n="cta_contact">Contact Us</a></div>
+    </div>
+    <div class="panel reveal">
+      <div>
+        <div style="font-size:64px;font-weight:900;color:var(--cyan)">R</div>
+        <p style="margin-top:12px;color:#CBD5E1" data-i18n="tagline">Your Problems, Our Smart Solutions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="why">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="why_eyebrow">Why Choose Us</span>
+      <h2 style="text-align:start" data-i18n="why_h">Why Rahmani Solutions?</h2>
+      <p style="color:var(--muted);margin-top:10px" data-i18n="why_p">We are committed to providing high-quality, reliable and affordable digital services. Your satisfaction is our top priority.</p>
+      <div class="feat">
+        <div class="item"><div class="ico" style="background:#2563EB">👥</div><div><b data-i18n="w1">Professional Service</b><span data-i18n="w1d">Skilled and experienced</span></div></div>
+        <div class="item"><div class="ico" style="background:#10B981">$</div><div><b data-i18n="w2">Transparent Pricing</b><span data-i18n="w2d">No hidden fees</span></div></div>
+        <div class="item"><div class="ico" style="background:#8B5CF6">🔒</div><div><b data-i18n="w3">Secure Payments</b><span data-i18n="w3d">Safe and trusted</span></div></div>
+        <div class="item"><div class="ico" style="background:#F59E0B">🎧</div><div><b data-i18n="w4">Customer Support</b><span data-i18n="w4d">Here to help you</span></div></div>
+      </div>
+      <a href="#account" class="btn btn-green pulse" style="margin-top:28px"><span data-i18n="hero_cta1">Get Started Now</span> <span class="arr">→</span></a>
+    </div>
+    <div class="panel reveal" style="background:linear-gradient(160deg,var(--navy),var(--navy2))">
+      <div><div style="font-size:64px;font-weight:900;color:var(--cyan)">✓</div><p style="margin-top:12px;color:#CBD5E1" data-i18n="tagline">Your Problems, Our Smart Solutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="testimonials">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="test_eyebrow">Testimonials</span><h2 data-i18n="test_h">What Our Clients Say</h2></div>
+    <div class="empty reveal"><b data-i18n="test_empty">No reviews yet</b><span data-i18n="test_empty_p">Verified customer reviews will appear here after completed orders.</span></div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta reveal">
+      <h2 data-i18n="cta_h">Ready to Solve Your Next Problem?</h2>
+      <p data-i18n="cta_p">Tell us what you need and get a clear quote.</p>
+      <div class="hero-cta">
+        <a href="#account" class="btn btn-green pulse"><span data-i18n="get_started">Get Started</span> <span class="arr">→</span></a>
+        <a href="#contact" class="btn btn-ghost"><span data-i18n="cta_contact">Contact Us</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contact" style="background:#fff">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="contact_eyebrow">Contact</span><h2 data-i18n="contact_h">Contact Rahmani Solutions</h2><p class="msg" style="margin-top:10px" data-i18n="contact_note">If Call or Email does not open your app, tap Copy and paste the number or address.</p></div>
+    <div class="cts">
+      <div class="card reveal">
+        <div class="tile" style="background:#25D366">WA</div>
+        <h3 data-i18n="c_wa">WhatsApp</h3>
+        <p>+93 774 620 072</p>
+        <a class="more" style="color:#128C7E" data-wa="wa_contact_msg" target="_blank" rel="noopener" href="#"><span data-i18n="c_wa_b">Open WhatsApp</span> <span class="arr">→</span></a>
+      </div>
+      <div class="card reveal">
+        <div class="tile" style="background:#2563EB">☎</div>
+        <h3 data-i18n="c_call">Call</h3>
+        <p>+93 774 620 072</p>
+        <a class="more" style="color:#2563EB" href="tel:+93774620072"><span data-i18n="c_call_b">Call now</span> <span class="arr">→</span></a>
+        <button type="button" class="copy-btn" data-copy="+93 774 620 072" data-i18n="copy_num">Copy number</button>
+      </div>
+      <div class="card reveal">
+        <div class="tile" style="background:#8B5CF6">@</div>
+        <h3 data-i18n="c_mail">Email</h3>
+        <p style="word-break:break-all">eng.abdullah.rahmani786@gmail.com</p>
+        <a class="more" style="color:#7C3AED" data-mail href="mailto:eng.abdullah.rahmani786@gmail.com"><span data-i18n="c_mail_b">Send email</span> <span class="arr">→</span></a>
+        <button type="button" class="copy-btn" data-copy="eng.abdullah.rahmani786@gmail.com" data-i18n="copy_mail">Copy email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="account">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="acc_eyebrow">Account</span><h2 data-i18n="acc_h">Sign up or sign in</h2></div>
+    <div class="card form wrap-narrow reveal">
+      <div class="acc-tabs">
+        <button type="button" class="btn btn-line" id="acSignupTab" aria-pressed="true" data-i18n="tab_signup">Sign up</button>
+        <button type="button" class="btn btn-line" id="acSigninTab" aria-pressed="false" data-i18n="tab_signin">Sign in</button>
+      </div>
+      <form id="acForm" class="form" novalidate>
+        <div id="acEmailRow"><label for="ac_email" data-i18n="lbl_email">Email</label><input id="ac_email" type="email" autocomplete="email"></div>
+        <div><label for="ac_user" id="ac_userLabel" data-i18n="lbl_user">Username</label><input id="ac_user" autocomplete="username" data-i18n-ph="ph_user" placeholder="e.g. ahmad_01"></div>
+        <div><label for="ac_pass" data-i18n="lbl_pass">Password (at least 8 characters)</label><input id="ac_pass" type="password" autocomplete="new-password"></div>
+        <div id="acConfirmRow"><label for="ac_pass2" data-i18n="lbl_pass2">Confirm password</label><input id="ac_pass2" type="password" autocomplete="new-password"></div>
+        <div><button type="submit" class="btn btn-green" id="acSubmit" data-i18n="acc_submit_up">Create account</button></div>
+        <p id="acMsg" role="status" class="msg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="quran">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="quran_eyebrow">Quran Learning</span><h2 data-i18n="quran_h">Learn the Quran, Juz 1 to 30</h2></div>
+
+    <div class="card form" style="padding:24px">
+      <h3 data-i18n="qari_h" style="color:var(--navy);font-size:19px">1. Select qari</h3>
+      <div class="row" id="qariBtns" style="margin-top:12px"></div>
+      <p class="msg" style="margin-top:12px" data-i18n="sample_note">Sample: the first 20 seconds of Surah Ar-Rahman (55).</p>
+    </div>
+
+    <div class="card form" style="margin-top:20px;padding:24px">
+      <h3 data-i18n="sel_h" style="color:var(--navy);font-size:19px">2. Select surah or juz</h3>
+      <div class="row" style="margin-top:12px;align-items:center">
+        <label style="font-size:14px"><input type="radio" name="qMode" value="surah" checked> <span data-i18n="sel_surah">Surah</span></label>
+        <label style="font-size:14px"><input type="radio" name="qMode" value="juz"> <span data-i18n="sel_juz">Juz</span></label>
+        <select id="qSurahSel" aria-label="Surah" style="padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;background:#fff;min-width:160px"></select>
+        <select id="qJuzSel" aria-label="Juz" hidden style="padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:15px;background:#fff;min-width:160px"></select>
+      </div>
+    </div>
+
+    <div class="card form" style="margin-top:20px;padding:24px">
+      <h3 data-i18n="play_h" style="color:var(--navy);font-size:19px">3. Play</h3>
+      <div class="row" style="margin-top:12px">
+        <button type="button" id="qPlay" class="btn btn-primary pulse" data-i18n="play_btn">Play</button>
+      </div>
+      <p id="qNow" class="msg" style="margin-top:12px"></p>
+      <audio id="qPlayer" controls preload="none" style="width:100%;margin-top:12px"></audio>
+    </div>
+  </div>
+</section>
+<section class="block" id="certificate" style="background:#fff">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="cert_eyebrow">Certificate</span><h2 data-i18n="cert_h">Create a certificate of completion</h2><p data-i18n="cert_p">Enter the name and course. The certificate is created here, and you can print it or save it as PDF.</p></div>
+    <form id="certForm" class="card form" style="max-width:820px;margin:0 auto" novalidate>
+      <div class="two">
+        <div><label for="c_company" data-i18n="cert_company">Company name *</label><input id="c_company"></div>
+        <div><label for="c_date" data-i18n="cert_date">Date</label><input id="c_date" type="date"></div>
+        <div><label for="c_mgr" data-i18n="cert_mgr">Top manager name *</label><input id="c_mgr"></div>
+        <div><label for="c_mgr_t" data-i18n="cert_mgr_title">Top manager title (e.g. Director)</label><input id="c_mgr_t"></div>
+        <div><label for="c_name" data-i18n="cert_name">Full name *</label><input id="c_name" autocomplete="name"></div>
+        <div><label for="c_course" data-i18n="cert_course">Course or training name *</label><input id="c_course"></div>
+      </div>
+
+      <div class="two" style="align-items:start">
+        <div>
+          <span class="lbl" data-i18n="cert_photo">Photo (optional, JPG, PNG or WebP, max 2 MB)</span>
+          <div class="row" style="margin:0;align-items:center"><button type="button" id="c_pick_p" class="btn btn-line btn-sm" data-i18n="cert_pick">Choose photo</button><span id="c_name_p" class="msg"></span></div>
+          <input id="c_file_p" type="file" accept="image/jpeg,image/png,image/webp" hidden>
+          <img id="c_prev_p" alt="" hidden style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-top:8px;border:2px solid var(--blue)">
+          <p class="msg" style="margin-top:6px" data-i18n="cert_photo_note">The photo stays on your device. It is not uploaded.</p>
+        </div>
+        <div>
+          <span class="lbl" data-i18n="cert_sig_up">Signature image (optional, PNG)</span>
+          <div class="row" style="margin:0;align-items:center"><button type="button" id="c_pick_sg" class="btn btn-line btn-sm" data-i18n="cert_pick">Choose photo</button><span id="c_name_sg" class="msg"></span></div>
+          <input id="c_file_sg" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <img id="c_prev_sg" alt="" hidden style="max-width:160px;max-height:70px;object-fit:contain;margin-top:8px">
+          <span class="lbl" style="margin-top:12px;display:block" data-i18n="cert_stamp_up">Company stamp image (optional, PNG)</span>
+          <div class="row" style="margin:0;align-items:center"><button type="button" id="c_pick_st" class="btn btn-line btn-sm" data-i18n="cert_pick">Choose photo</button><span id="c_name_st" class="msg"></span></div>
+          <input id="c_file_st" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <img id="c_prev_st" alt="" hidden style="max-width:120px;max-height:120px;object-fit:contain;margin-top:8px">
+        </div>
+      </div>
+
+      <div><button type="submit" class="btn btn-primary" data-i18n="cert_btn">Create certificate</button></div>
+      <p id="certErr" class="err" role="alert"></p>
+    </form>
+
+    <div id="certWrap" hidden style="margin-top:28px">
+      <div class="cert-scroll"><div id="certOut" class="cert"></div></div>
+      <div class="row" style="justify-content:center;margin-top:16px"><button type="button" id="certPrint" class="btn btn-green" data-i18n="cert_print">Print or save as PDF</button></div>
+    </div>
+    <p class="msg" style="text-align:center;margin-top:20px" data-i18n="cert_note">Certificates show the details you entered.</p>
+  </div>
+</section>
+<section class="block" id="blog" style="background:#fff">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="blog_eyebrow">Blog</span><h2 data-i18n="blog_h">Latest articles</h2><p data-i18n="blog_p">Articles on AI, programming, databases, careers, and business technology.</p></div>
+    <div class="empty reveal"><b data-i18n="blog_empty">No articles have been published yet</b><span data-i18n="blog_empty_p">New articles will appear here.</span></div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="faq_eyebrow">FAQ</span><h2 data-i18n="faq_h">Frequently asked questions</h2></div>
+    <div class="grid4" style="grid-template-columns:repeat(2,1fr)">
+      <div class="card reveal"><h3 data-i18n="q1">How do I order a service?</h3><p data-i18n="a1">Choose a service, send a request, and receive a quotation before any payment.</p></div>
+      <div class="card reveal"><h3 data-i18n="q2">Is payment secure?</h3><p data-i18n="a2">Payments go through our payment provider. An order is marked paid only after the payment is verified.</p></div>
+      <div class="card reveal"><h3 data-i18n="q3">Can I request changes?</h3><p data-i18n="a3">Yes. You can ask for a revision after the work is delivered.</p></div>
+      <div class="card reveal"><h3 data-i18n="q4">Is AI output always correct?</h3><p data-i18n="a4">No. AI can make mistakes, so review important answers before you rely on them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="legal" style="background:#fff">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow" data-i18n="legal_eyebrow">Legal</span><h2 data-i18n="legal_h">Policies</h2><p data-i18n="legal_p">DRAFT: these policies must be reviewed by a qualified lawyer before they are published.</p></div>
+    <div class="grid4" style="grid-template-columns:repeat(2,1fr)">
+      <div class="card reveal"><h3 data-i18n="lg1">Privacy</h3><p data-i18n="lg1d">We store only what you give us. We never store payment card numbers, CVVs, or wallet PINs.</p></div>
+      <div class="card reveal"><h3 data-i18n="lg2">Terms</h3><p data-i18n="lg2d">Services follow the description and the quotation you accept.</p></div>
+      <div class="card reveal"><h3 data-i18n="lg3">Refunds</h3><p data-i18n="lg3d">Refund requests are reviewed by an administrator before any money is returned.</p></div>
+      <div class="card reveal"><h3 data-i18n="lg4">Acceptable use</h3><p data-i18n="lg4d">Do not use our services for illegal activity, and do not send passwords or secret keys.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo"><img class="logo-mark" src="data:image/jpeg;base64,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" alt=""><span>Rahmani Solutions<small data-i18n="f_tag">Your Problems, Our Smart Solutions.</small></span></div>
+        <p style="margin-top:14px;font-size:14px;color:#94A3B8">Abdullah Rahmani, CEO</p>
+      </div>
+      <div><h5 data-i18n="f_quick">Quick Links</h5><a class="fl" href="#top" data-i18n="nav_home">Home</a><a class="fl" href="#services" data-i18n="nav_services">Services</a><a class="fl" href="#pricing" data-i18n="nav_pricing">Pricing</a><a class="fl" href="#ceo" data-i18n="nav_about">About</a><a class="fl" href="#contact" data-i18n="nav_contact">Contact</a></div>
+      <div><h5 data-i18n="f_help">Help</h5><a class="fl" href="#faq" data-i18n="q1">FAQ</a><a class="fl" href="#how-it-works" data-i18n="nav_how">How It Works</a><a class="fl" href="#legal" data-i18n="lg1">Privacy</a><a class="fl" href="#legal" data-i18n="lg2">Terms</a><a class="fl" href="#legal" data-i18n="lg3">Refunds</a></div>
+      <div>
+        <h5 data-i18n="f_news">Newsletter</h5>
+        <p style="font-size:14px;color:#94A3B8" data-i18n="f_news_p">Get the latest updates and offers.</p>
+        <form class="news" id="newsForm">
+          <label for="newsEmail" style="position:absolute;left:-9999px">Email</label>
+          <input id="newsEmail" type="email" required data-i18n-ph="f_email_ph" placeholder="Email address">
+          <button class="btn btn-primary" type="submit" data-i18n="f_sub">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="copy" data-i18n="f_copy">© 2025 Rahmani Solutions. All rights reserved.</div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="wa_float_msg" target="_blank" rel="noopener" href="#" aria-label="WhatsApp us"><span data-i18n="wa_float">WhatsApp us</span></a>
+
+<script>
+const T = {"en": {"nav_home": "Home", "nav_services": "Services", "nav_pricing": "Pricing", "nav_how": "How It Works", "nav_about": "About", "nav_blog": "Blog", "nav_contact": "Contact", "nav_signin": "Sign in", "nav_signup": "Sign up", "menu_open": "Open menu", "menu_close": "Close menu", "search": "Search", "tagline": "Your Problems, Our Smart Solutions.", "hero_badge": "All-in-one digital solutions", "hero_t1": "Your Problems,", "hero_t2": "Our Smart Solutions.", "hero_lead": "From AI assistance to web development, business management, and student support, Rahmani Solutions helps you solve problems, save time, and reach your goals.", "hero_cta1": "Get Started Now", "hero_cta2": "Explore Services", "chip_ai": "AI Assistant", "chip_ai_s": "Solutions in seconds", "chip_cv": "CV & Career", "chip_cv_s": "Get hired faster", "chip_web": "Web Development", "chip_web_s": "Build your dream", "chip_dig": "Digital Services", "chip_dig_s": "Design · Translate · More", "chip_biz": "Business Solutions", "chip_biz_s": "Manage & grow", "chip_stu": "Student Support", "chip_stu_s": "Learn · Solve · Succeed", "svc_eyebrow": "Our Services", "svc_h": "What Can We Do For You?", "svc_p": "We offer a wide range of digital services to help you solve problems, improve productivity, and reach your goals.", "svc_ai_n": "AI Problem Solver", "svc_ai_d": "Get help with writing, translation, ideas, research and more using AI.", "svc_fix_n": "Website Fixing", "svc_fix_d": "Fix errors, improve performance, update your website.", "svc_web_n": "Web Development", "svc_web_d": "Custom websites, web apps, landing pages and more.", "svc_db_n": "Database Solutions", "svc_db_d": "Design, fix and manage your database systems.", "svc_cv_n": "CV & Job Assistant", "svc_cv_d": "Build professional CVs, cover letters and job applications.", "svc_stu_n": "Student Problem Solver", "svc_stu_d": "Get help with assignments, programming, math and more.", "svc_biz_n": "Business Management", "svc_biz_d": "Systems for pharmacy, clinic, school, inventory and accounting.", "svc_mkt_n": "Digital Services Marketplace", "svc_mkt_d": "Graphic design, translation, content writing and more.", "btn_open_ai": "Open AI Assistant", "btn_open_cv": "Open CV Builder", "btn_request": "Request Service", "how_eyebrow": "Process", "how_h": "How It Works", "how_p": "Getting your solution is easy. Just follow these simple steps.", "how1": "1. Submit Your Problem", "how1d": "Describe your issue and upload files if needed.", "how2": "2. Receive a Quote", "how2d": "We review your request and send a price and time estimate.", "how3": "3. Make Payment", "how3d": "Pay through our secure checkout once you approve the quote.", "how4": "4. We Work on It", "how4d": "Our team or AI tools work on your problem and keep you informed.", "how5": "5. Get Your Solution", "how5d": "Download completed work from your dashboard.", "how6": "6. Rate & Review", "how6d": "Share feedback to help us improve.", "price_eyebrow": "Pricing", "price_h": "Simple & Transparent Pricing", "price_p": "Choose the plan that fits your needs. Prices are examples and can be changed by the administrator.", "pl_basic": "Basic", "pl_basic_s": "For small tasks", "pl_std": "Standard", "pl_std_s": "For regular users", "pl_prem": "Premium", "pl_prem_s": "For professionals & businesses", "pl_mon": "Monthly Plan", "pl_mon_s": "For frequent users", "per_service": "/ service", "per_month": "/ month", "popular": "Most Popular", "best": "Best Value", "f_basic1": "Basic support", "f_basic2": "1-day delivery", "f_basic3": "Email support", "f_std1": "Priority support", "f_std2": "Faster delivery (12–24h)", "f_std3": "File attachments", "f_prem1": "VIP support", "f_prem2": "Fast delivery (6–12h)", "f_prem3": "Unlimited revisions", "f_mon1": "Access to AI tools", "f_mon2": "Discounted prices", "f_mon3": "Priority support", "get_started": "Get Started", "view_details": "View Details", "price_note": "Subscriptions will be enabled after recurring billing is implemented and tested.", "why_eyebrow": "Why Choose Us", "why_h": "Why Rahmani Solutions?", "why_p": "We are committed to providing high-quality, reliable and affordable digital services. Your satisfaction is our top priority.", "w1": "Professional Service", "w1d": "Skilled and experienced", "w2": "Transparent Pricing", "w2d": "No hidden fees", "w3": "Secure Payments", "w3d": "Safe and trusted", "w4": "Customer Support", "w4d": "Here to help you", "ceo_eyebrow": "Our Leadership", "ceo_name": "Abdullah Rahmani", "ceo_title": "Chief Executive Officer (CEO)", "ceo_p": "Leading Rahmani Solutions in delivering practical, affordable digital solutions for people, students, job seekers, and businesses. Reach out directly for quotations, partnerships, or support.", "call": "Call", "email": "Email", "whatsapp": "WhatsApp", "test_eyebrow": "Testimonials", "test_h": "What Our Clients Say", "test_empty": "No reviews yet", "test_empty_p": "Verified customer reviews will appear here after completed orders.", "cta_h": "Ready to Solve Your Next Problem?", "cta_p": "Tell us what you need and get a clear quote.", "cta_contact": "Contact Us", "contact_eyebrow": "Contact", "contact_h": "Contact Rahmani Solutions", "c_wa": "WhatsApp", "c_wa_b": "Open WhatsApp", "c_call": "Call", "c_call_b": "Call now", "c_mail": "Email", "c_mail_b": "Send email", "acc_eyebrow": "Account", "acc_h": "Sign up or sign in", "tab_signup": "Sign up", "tab_signin": "Sign in", "lbl_email": "Email", "lbl_user": "Username", "lbl_user_in": "Username or email", "lbl_pass": "Password (at least 8 characters)", "lbl_pass2": "Confirm password", "acc_submit_up": "Create account", "acc_submit_in": "Sign in", "ph_user": "e.g. ahmad_01", "e_email": "Enter a valid email address.", "e_user": "Username must be 3 to 20 letters, numbers, or underscores.", "e_pass": "Password must be at least 8 characters.", "e_match": "Passwords do not match.", "e_signin": "Enter your username or email and your password.", "acc_notice": "Accounts are saved on the live Rahmani Solutions website, which is not connected to this preview yet. Nothing was saved here.", "cv_eyebrow": "CV & Job Assistant", "cv_h": "Create your CV, cover letter and job application", "cv_p": "Fill in the form. Your documents are created only from what you enter. Review everything before you send it.", "f_name": "Full name *", "f_job": "Job title you want *", "f_email": "Email", "f_phone": "Phone", "f_city": "City", "f_company": "Company you are applying to (optional)", "f_summary": "Short summary about you", "f_exp": "Work experience (one job per line: Role | Company | Years | What you did)", "f_edu": "Education (one per line)", "f_skills": "Skills (separate with commas)", "f_motiv": "Why you want this job (used in the cover letter)", "ph_job": "e.g. Database Administrator", "ph_sum": "Two or three sentences about your skills and goals", "ph_exp": "Database Developer | ABC Company | 2021-2024 | Built and maintained PostgreSQL databases", "ph_edu": "Bachelor of Computer Science, University name, year", "ph_skills": "SQL, Python, Communication, Teamwork", "cv_submit": "Create CV and cover letter", "tab_cv": "CV", "tab_cl": "Cover letter", "tab_job": "Job application", "copy": "Copy text", "print": "Print or save as PDF", "cv_need": "Please enter at least your full name and the job title you want.", "cv_sum_h": "PROFESSIONAL SUMMARY", "cv_exp_h": "EXPERIENCE", "cv_edu_h": "EDUCATION", "cv_skill_h": "SKILLS", "cl_dear": "Dear Hiring Manager,", "cl_apply": "I am writing to apply for the position of {0}{1}.", "cl_prev": "In my previous role{0}: {1}.", "cl_thanks": "Thank you for your time. I would welcome the opportunity to discuss how I can contribute.", "cl_sincere": "Sincerely,", "cl_at": " at ", "job_h": "JOB APPLICATION DETAILS", "job_name": "Full name", "job_pos": "Position applied for", "job_co": "Company", "job_mail": "Email", "job_ph": "Phone", "job_city": "City", "job_skills": "Skills", "job_sum": "Summary", "job_work": "Work history", "job_edu": "Education", "ai_eyebrow": "AI Problem Solver", "ai_h": "Ask the AI assistant", "ai_p": "Writing, translation, summaries, ideas, business plans, spreadsheet formulas, programming and SQL help. AI can make mistakes, so review important answers before you use them.", "ai_hello": "Hello. What problem can I help you solve today?", "ai_ph": "Type your question...", "ai_label": "Your question", "ai_send": "Send", "ai_new": "New conversation", "ai_new_msg": "New conversation started. What can I help you with?", "ai_wa": "Send to WhatsApp", "ai_ready": "Ready. Your questions are answered by the AI model.", "ai_unavail": "The AI assistant is not connected yet. The administrator must add the AI key on the server.", "ai_thinking": "Thinking...", "ai_err": "The AI could not answer right now. Please try again.", "ai_rate": "Too many requests. Please wait a moment and try again.", "ai_denied": "AI access was not allowed for this page.", "ai_ask_first": "Ask a question in the AI chat first, then send it to WhatsApp.", "ai_wa_q": "Question from the Rahmani AI Problem Solver:", "ai_wa_a": "AI answer:", "req_eyebrow": "Request a Service", "req_h": "Send your request", "req_p": "Choose a service and describe the problem. Your request opens in WhatsApp addressed to Rahmani Solutions. You receive a quotation before any payment.", "r_name": "Full name *", "r_phone": "Phone or WhatsApp", "r_service": "Service *", "r_details": "Describe your problem or request *", "ph_details": "What do you need, and what is the deadline or budget?", "r_submit": "Send request on WhatsApp", "r_call": "Call us", "err_name": "Please enter your full name.", "err_details": "Please describe your request so we can prepare a quotation.", "r_ready": "Your request is ready. Tap the button below to open WhatsApp, then press Send.", "r_open": "Open WhatsApp with my request", "blog_eyebrow": "Blog", "blog_h": "Latest articles", "blog_p": "Articles on AI, programming, databases, careers, and business technology.", "blog_empty": "No articles have been published yet", "blog_empty_p": "New articles will appear here.", "faq_eyebrow": "FAQ", "faq_h": "Frequently asked questions", "q1": "How do I order a service?", "a1": "Choose a service, send a request, and receive a quotation before any payment.", "q2": "Is payment secure?", "a2": "Payments go through our payment provider. An order is marked paid only after the payment is verified.", "q3": "Can I request changes?", "a3": "Yes. You can ask for a revision after the work is delivered.", "q4": "Is AI output always correct?", "a4": "No. AI can make mistakes, so review important answers before you rely on them.", "legal_eyebrow": "Legal", "legal_h": "Policies", "legal_p": "DRAFT: these policies must be reviewed by a qualified lawyer before they are published.", "lg1": "Privacy", "lg1d": "We store only what you give us. We never store payment card numbers, CVVs, or wallet PINs.", "lg2": "Terms", "lg2d": "Services follow the description and the quotation you accept.", "lg3": "Refunds", "lg3d": "Refund requests are reviewed by an administrator before any money is returned.", "lg4": "Acceptable use", "lg4d": "Do not use our services for illegal activity, and do not send passwords or secret keys.", "f_tag": "Your Problems, Our Smart Solutions.", "f_quick": "Quick Links", "f_help": "Help", "f_news": "Newsletter", "f_news_p": "Get the latest updates and offers.", "f_email_ph": "Email address", "f_sub": "Subscribe", "f_thanks": "Thanks!", "f_copy": "© 2025 Rahmani Solutions. All rights reserved.", "f_privacy": "Privacy", "f_terms": "Terms", "f_contact_ph": "Contact details are shown in the Contact section.", "wa_float": "WhatsApp us", "wa_float_msg": "Hello Rahmani Solutions, I need help with a problem. Please contact me.", "wa_lead_msg": "Hello Abdullah Rahmani, I would like to ask about Rahmani Solutions services.", "wa_contact_msg": "Hello Rahmani Solutions, I would like to contact you.", "mail_subj": "Question about Rahmani Solutions", "toast_blocked": "Your browser blocked the automatic opening. Tap here to open WhatsApp:", "toast_open_wa": "Open WhatsApp", "lang_name": "English", "close_panel": "Close this section", "sec_ai": "AI Problem Solver", "sec_req": "Request a Service", "hero_bottom_note": "", "nav_quran": "Quran", "quran_eyebrow": "Quran Learning", "quran_h": "Learn the Quran, Juz 1 to 30", "quran_p": "Choose a juz, listen to a qari, and follow the verses. Text and recitation appear once the connected Quran source is set up.", "quran_juz": "Juz", "quran_qari": "Reciter", "quran_play": "Play", "quran_pause": "Pause", "quran_playall": "Play juz", "quran_repeat": "Repeat verse", "quran_speed": "Speed", "quran_nosrc": "Quran text and recitation are not connected yet. The administrator must connect a licensed Quran text and audio source.", "quran_tip": "Listen first, then repeat each verse aloud. Learn a few verses every day.", "quran_ayah": "Verse", "quran_search_ph": "Juz 5, Surah 55, or 55:1", "quran_search_btn": "Go", "quran_search_help": "Type juz N, surah N, or surah:ayah. This device remembers where you stopped.", "quran_bad": "Enter juz 1 to 30, surah 1 to 114, or surah:ayah such as 55:1.", "quran_resume_h": "Continue where you stopped", "quran_resume_btn": "Continue", "quran_save": "Save this place", "quran_saved": "Place saved.", "quran_bm_h": "Saved places", "quran_bm_none": "No saved places yet.", "quran_rahman_h": "Surah Ar-Rahman (55)", "quran_rahman_p": "Listen to this surah with any of the reciters below.", "quran_audio_na": "Audio is not connected yet. A licensed recitation source must be connected before playback works.", "quran_now": "Now playing", "quran_stop": "Stop", "quran_player_h": "Player", "quran_pos": "Juz {0} · Surah {1} · Ayah {2}", "quran_surah_na": "The text of this surah appears once the Quran source is connected.", "quran_remove": "Remove", "quran_go_juz": "Juz", "quran_go_surah": "Surah", "quran_step1": "1. Choose a reciter", "quran_step2": "2. Choose a surah (1 to 114)", "quran_step3": "3. Press Play", "quran_surah_missing": "This reciter's recording of this surah is not connected yet.", "quran_surah_btn": "Play surah", "quran_src_note": "Recordings: Al-Quran Cloud CDN (islamic.network). Text is not loaded on this preview.", "qari_h": "1. Select qari", "sel_h": "2. Select surah or juz", "sel_surah": "Surah", "sel_juz": "Juz", "play_h": "3. Play", "play_btn": "Play", "sample_btn": "Listen to sample", "sample_note": "Sample: the first 20 seconds of Surah Ar-Rahman (55).", "need_server": "Playing a juz or an ayah needs the Quran data connected on the deployed website. Surah playback works for the reciters connected now.", "pick_surah": "Surah", "pick_juz": "Juz", "now_label": "Now", "nav_cert": "Certificate", "cert_eyebrow": "Certificate", "cert_h": "Create a certificate of completion", "cert_p": "Enter the name and course. The certificate is created here, and you can print it or save it as PDF.", "cert_name": "Full name *", "cert_course": "Course or training name *", "cert_date": "Date", "cert_org": "Organization (optional)", "cert_btn": "Create certificate", "cert_print": "Print or save as PDF", "cert_title": "Certificate of Completion", "cert_given": "This certifies that", "cert_for": "has successfully completed", "cert_issued": "Issued by Rahmani Solutions", "cert_no": "Certificate No.", "cert_sig": "Abdullah Rahmani, Chief Executive Officer", "cert_note": "Certificates show the details you entered. Online checking of certificate numbers will be available once the full website with a database is connected.", "cert_need": "Please enter the company name, top manager name, person's name, and course.", "cert_photo": "Photo (optional, JPG, PNG or WebP, max 2 MB)", "cert_photo_bad": "Please choose a JPG, PNG, or WebP photo under 2 MB.", "cert_photo_note": "The photo stays on your device. It is not uploaded.", "cert_pick": "Choose photo", "cert_photo_ok": "Photo ready. It will appear on the certificate.", "cert_company": "Company name *", "cert_mgr": "Top manager name *", "cert_mgr_title": "Top manager title (e.g. Director)", "cert_sig_up": "Signature image (optional, PNG)", "cert_stamp_up": "Company stamp image (optional, PNG)", "cert_upload_ok": "Image ready.", "cert_issued_by": "Issued by", "ai_checking": "Checking AI availability...", "copy_num": "Copy number", "copy_mail": "Copy email", "copied": "Copied:", "contact_note": "If Call or Email does not open your app, tap Copy and paste the number or address."}, "ps": {"nav_home": "کور", "nav_services": "خدمات", "nav_pricing": "بیې", "nav_how": "دا کار څنګه کیږي", "nav_about": "زموږ په اړه", "nav_blog": "بلاګ", "nav_contact": "اړیکه", "nav_signin": "ننوتل", "nav_signup": "ثبت نام", "menu_open": "مینو خلاصه کړئ", "menu_close": "مینو وتړئ", "search": "لټون", "tagline": "ستاسو ستونزې، زموږ هوښیار حلونه.", "hero_badge": "ټول ډیجیټل حلونه په یو ځای کې", "hero_t1": "ستاسو ستونزې،", "hero_t2": "زموږ هوښیار حلونه.", "hero_lead": "د AI مرستې څخه تر ویب جوړونې، سوداګریز مدیریت او د زده‌کوونکو ملاتړ پورې، رحماني سلوشنز تاسو سره ستونزې حلوي، وخت ژغوري او خپلو موخو ته رسیږئ.", "hero_cta1": "اوس پیل کړئ", "hero_cta2": "خدمات وګورئ", "chip_ai": "AI مرستیال", "chip_ai_s": "په ثانیو کې حلونه", "chip_cv": "CV او کیریر", "chip_cv_s": "ژر دنده ومومئ", "chip_web": "ویب پرمختیا", "chip_web_s": "خپل خوب جوړ کړئ", "chip_dig": "ډیجیټل خدمات", "chip_dig_s": "ډیزاین · ژباړه · نور", "chip_biz": "سوداګریز حلونه", "chip_biz_s": "مدیریت او وده", "chip_stu": "د زده‌کوونکو ملاتړ", "chip_stu_s": "زده کړه · حل · بریالیتوب", "svc_eyebrow": "زموږ خدمات", "svc_h": "موږ ستاسو لپاره څه کولی شو؟", "svc_p": "موږ د ډیجیټل خدماتو پراخه لړۍ وړاندې کوو، ترڅو ستونزې حل کړئ، کار غوره کړئ او خپلې موخې ترلاسه کړئ.", "svc_ai_n": "د AI ستونزو حل‌کوونکی", "svc_ai_d": "د AI په کارولو سره د لیکنې، ژباړې، نظرونو، څیړنې او نورو کې مرسته ترلاسه کړئ.", "svc_fix_n": "د ویب سایټ ترمیم", "svc_fix_d": "تېروتنې سمې کړئ، فعالیت ښه کړئ، خپل ویب سایټ تازه کړئ.", "svc_web_n": "ویب پرمختیا", "svc_web_d": "ځانګړي ویب سایټونه، ویب اپلیکیشنونه، لینډینګ پاڼې او نور.", "svc_db_n": "د ډیټابیس حلونه", "svc_db_d": "د ډیټابیس سیسټمونه ډیزاین، ترمیم او مدیریت کړئ.", "svc_cv_n": "CV او د کار مرستیال", "svc_cv_d": "مسلکي CV، د پوښتنلیک لیکونه او د کار غوښتنلیکونه جوړ کړئ.", "svc_stu_n": "د زده‌کوونکو د ستونزو حل‌کوونکی", "svc_stu_d": "د دندو، برمجه کولو، ریاضی او نورو کې مرسته ترلاسه کړئ.", "svc_biz_n": "سوداګریز مدیریت", "svc_biz_d": "د درملتون، کلینیک، ښوونځي، ګدام او حسابداري لپاره سیسټمونه.", "svc_mkt_n": "د ډیجیټل خدماتو بازار", "svc_mkt_d": "ګرافیک ډیزاین، ژباړه، د مینځپانګې لیکنه او نور.", "btn_open_ai": "AI مرستیال خلاص کړئ", "btn_open_cv": "د CV جوړونکی خلاص کړئ", "btn_request": "خدمت وغواړئ", "how_eyebrow": "پروسه", "how_h": "دا کار څنګه کیږي", "how_p": "خپل حل ترلاسه کول اسانه دي. دا ساده ګامونه تعقیب کړئ.", "how1": "1. ستونزه وړاندې کړئ", "how1d": "خپله ستونزه تشریح کړئ او که اړینه وي فایلونه پورته کړئ.", "how2": "2. نرخ ترلاسه کړئ", "how2d": "موږ ستاسو غوښتنه بیاکتنه کوو او بیه او د وخت اټکل درته لیږو.", "how3": "3. تادیه وکړئ", "how3d": "کله چې نرخ تایید کړئ، د خوندي تادیې له لارې پیسې ورکړئ.", "how4": "4. موږ پرې کار کوو", "how4d": "زموږ ټیم یا AI وسایل ستاسو ستونزې باندې کار کوي او تاسو ته خبر ورکوي.", "how5": "5. خپل حل ترلاسه کړئ", "how5d": "بشپړ شوی کار د خپل ډشبورډ څخه ډاونلوډ کړئ.", "how6": "6. ارزونه او نظر", "how6d": "زموږ د ښه کیدو لپاره نظر شریک کړئ.", "price_eyebrow": "بیې", "price_h": "ساده او روښانه بیې", "price_p": "هغه پلان وټاکئ چې ستاسو اړتیاوې پوره کړي. بیې بیلګې دي او د مدیر لخوا بدلېدای شي.", "pl_basic": "اساسي", "pl_basic_s": "د کوچنیو دندو لپاره", "pl_std": "معیاري", "pl_std_s": "د منظمو کاروونکو لپاره", "pl_prem": "ځانګړی", "pl_prem_s": "د مسلکي کسانو او سوداګرو لپاره", "pl_mon": "میاشتنی پلان", "pl_mon_s": "د ډیرو کاروونکو لپاره", "per_service": "/ خدمت", "per_month": "/ میاشت", "popular": "ډیر غوښتل شوی", "best": "غوره ارزښت", "f_basic1": "اساسي ملاتړ", "f_basic2": "۱ ورځ تحویل", "f_basic3": "د بریښنالیک ملاتړ", "f_std1": "لومړیتوب ملاتړ", "f_std2": "ګړندی تحویل (۱۲ تر ۲۴ ساعته)", "f_std3": "د فایلونو ضمیمې", "f_prem1": "VIP ملاتړ", "f_prem2": "ګړندی تحویل (۶ تر ۱۲ ساعته)", "f_prem3": "نامحدودې بیاکتنې", "f_mon1": "د AI وسایلو ته لاسرسی", "f_mon2": "ارزانه بیې", "f_mon3": "لومړیتوب ملاتړ", "get_started": "پیل کړئ", "view_details": "جزئیات وګورئ", "price_note": "ګډون به هغه مهال فعال شي چې دوره‌یي تادیه پلې شي او ازمول شي.", "why_eyebrow": "ولې موږ", "why_h": "ولې رحماني سلوشنز؟", "why_p": "موږ ژمن یو چې لوړ کیفیت، باوري او مناسب بیه ډیجیټل خدمات وړاندې کړو. ستاسو رضایت زموږ لومړیتوب دی.", "w1": "مسلکي خدمت", "w1d": "ماهر او تجربه‌کار", "w2": "روښانه بیې", "w2d": "پټې پیسې نشته", "w3": "خوندي تادیات", "w3d": "خوندي او باوري", "w4": "د پیرودونکو ملاتړ", "w4d": "ستاسو د مرستې لپاره دلته یو", "ceo_eyebrow": "زموږ رهبري", "ceo_name": "عبدالله رحماني", "ceo_title": "اجرایوي رئیس (CEO)", "ceo_p": "د رحماني سلوشنز رهبري کوي ترڅو خلکو، زده‌کوونکو، دنده غوښتونکو او سوداګرو ته عملي او مناسب ډیجیټل حلونه وړاندې کړي. د نرخ، همکارۍ یا ملاتړ لپاره مستقیم اړیکه ونیسئ.", "call": "زنګ", "email": "بریښنالیک", "whatsapp": "WhatsApp", "test_eyebrow": "نظرونه", "test_h": "زموږ پیرودونکي څه وایي", "test_empty": "تراوسه نظر نشته", "test_empty_p": "د بشپړو امرونو وروسته تصدیق شوي نظرونه به دلته ښکاره شي.", "cta_h": "د بلې ستونزې د حل لپاره چمتو یاست؟", "cta_p": "ما ته ووایاست چې څه اړتیا لرئ او یو روښانه نرخ ترلاسه کړئ.", "cta_contact": "اړیکه ونیسئ", "contact_eyebrow": "اړیکه", "contact_h": "له رحماني سلوشنز سره اړیکه", "c_wa": "WhatsApp", "c_wa_b": "WhatsApp خلاص کړئ", "c_call": "زنګ", "c_call_b": "اوس زنګ ووهئ", "c_mail": "بریښنالیک", "c_mail_b": "بریښنالیک ولیږئ", "acc_eyebrow": "حساب", "acc_h": "ثبت نام یا ننوتل", "tab_signup": "ثبت نام", "tab_signin": "ننوتل", "lbl_email": "بریښنالیک", "lbl_user": "کاروونکي نوم", "lbl_user_in": "کاروونکي نوم یا بریښنالیک", "lbl_pass": "پټنوم (لږترلږه ۸ توري)", "lbl_pass2": "پټنوم تایید کړئ", "acc_submit_up": "حساب جوړ کړئ", "acc_submit_in": "ننوتل", "ph_user": "بیلګه: ahmad_01", "e_email": "سم بریښنالیک ولیکئ.", "e_user": "کاروونکي نوم باید ۳ تر ۲۰ توري، عددونه یا خط زیر ولري.", "e_pass": "پټنوم باید لږترلږه ۸ توري ولري.", "e_match": "پټنومونه سره سمون نه لري.", "e_signin": "کاروونکي نوم یا بریښنالیک او پټنوم ولیکئ.", "acc_notice": "حسابونه د ژوندي رحماني سلوشنز ویب پاڼې کې خوندي کیږي، چې تراوسه د دې مخکتنې سره نه دی وصل. دلته هیڅ نه دی خوندي شوي.", "cv_eyebrow": "د CV او کار مرستیال", "cv_h": "خپل CV، د پوښتنلیک لیک او د کار غوښتنلیک جوړ کړئ", "cv_p": "فورمه ډکه کړئ. اسناد یوازې د هغو معلوماتو له مخې جوړیږي چې ولیکئ. دا ټول وګورئ مخکې لدې چې ولیږئ.", "f_name": "بشپړ نوم *", "f_job": "هغه دنده چې غواړئ *", "f_email": "بریښنالیک", "f_phone": "تلیفون", "f_city": "ښار", "f_company": "هغه شرکت چې درخواست ورکوئ (اختیاري)", "f_summary": "د ځان لنډ معرفي", "f_exp": "د کار تجربه (هره دنده په یوه کرښه: دنده | شرکت | کلونه | څه کار مو کړی)", "f_edu": "زده کړه (هره یوه په یوه کرښه)", "f_skills": "مهارتونه (د کامې سره جلا کړئ)", "f_motiv": "ولې دا دنده غواړئ (په پوښتنلیک کې کارول کیږي)", "ph_job": "بیلګه: د ډیټابیس مدیر", "ph_sum": "د خپلو مهارتونو او موخو په اړه دوه یا درې جملې", "ph_exp": "د ډیټابیس پراختیایی | ABC شرکت | ۲۰۲۱-۲۰۲۴ | د PostgreSQL ډیټابیسونه جوړ او ساتل", "ph_edu": "د کمپیوټر ساینس لیسانس، د پوهنتون نوم، کال", "ph_skills": "SQL، Python، اړیکه، ټیم کار", "cv_submit": "CV او د پوښتنلیک لیک جوړ کړئ", "tab_cv": "CV", "tab_cl": "د پوښتنلیک لیک", "tab_job": "د کار غوښتنلیک", "copy": "متن کاپي کړئ", "print": "چاپ یا د PDF په توګه خوندي کړئ", "cv_need": "مهرباني وکړئ لږترلږه خپل بشپړ نوم او هغه دنده ولیکئ چې غواړئ.", "cv_sum_h": "مسلکي لنډیز", "cv_exp_h": "تجربه", "cv_edu_h": "زده کړه", "cv_skill_h": "مهارتونه", "cl_dear": "ګرانه د کار استخدام کونکې ،", "cl_apply": "زه د {0}{1} دندې لپاره غوښتنه کوم.", "cl_prev": "په تېره دنده کې{0}: {1}.", "cl_thanks": "ستاسو د وخت لپاره مننه. زه به خوښ شم چې څنګه مرسته کولی شم وغږیږو.", "cl_sincere": "په درناوي،", "cl_at": " په", "job_h": "د کار غوښتنلیک توضیحات", "job_name": "بشپړ نوم", "job_pos": "غوښتل شوې دنده", "job_co": "شرکت", "job_mail": "بریښنالیک", "job_ph": "تلیفون", "job_city": "ښار", "job_skills": "مهارتونه", "job_sum": "لنډیز", "job_work": "د کار تاریخچه", "job_edu": "زده کړه", "ai_eyebrow": "AI د ستونزو حل‌کوونکی", "ai_h": "له AI مرستیال څخه پوښتنه وکړئ", "ai_p": "لیکنه، ژباړه، لنډیزونه، نظرونه، سوداګریز پلانونه، د سپریډشیټ فورمولونه، پروګرامول او SQL مرسته. AI کېدای شي تېروتنه وکړي، نو مهم ځوابونه مخکې لدې چې وکاروئ وګورئ.", "ai_hello": "سلام. نن کومه ستونزه حل کولای شم؟", "ai_ph": "خپله پوښتنه ولیکئ...", "ai_label": "ستاسو پوښتنه", "ai_send": "ولیږئ", "ai_new": "نوې خبرې", "ai_new_msg": "نوې خبرې پیل شوې. زه له تاسو سره څنګه مرسته کولی شم؟", "ai_wa": "WhatsApp ته ولیږئ", "ai_ready": "چمتو. ستاسو پوښتنې د AI ماډل لخوا ځواب کیږي.", "ai_unavail": "AI مرستیال لا وصل نه دی. مدیر باید سرور ته د AI کیلي اضافه کړي.", "ai_thinking": "فکر کوم...", "ai_err": "AI اوس ځواب نشي ورکولی. مهرباني وکړئ بیا هڅه وکړئ.", "ai_rate": "ډیرې غوښتنې. مهرباني وکړئ یوه شیبه صبر وکړئ او بیا هڅه وکړئ.", "ai_denied": "د دې پاڼې لپاره AI ته لاسرسي اجازه نه لري.", "ai_ask_first": "لومړی د AI چت کې پوښتنه وکړئ، بیا یې WhatsApp ته ولیږئ.", "ai_wa_q": "د رحماني AI د ستونزو حل‌کوونکي څخه پوښتنه:", "ai_wa_a": "د AI ځواب:", "req_eyebrow": "د خدمت غوښتنه", "req_h": "خپله غوښتنه ولیږئ", "req_p": "یو خدمت وټاکئ او ستونزه تشریح کړئ. ستاسو غوښتنه د رحماني سلوشنز ته په WhatsApp کې خلاصیږي. تاسو د هرې تادیې دمخه نرخ ترلاسه کوئ.", "r_name": "بشپړ نوم *", "r_phone": "تلیفون یا WhatsApp", "r_service": "خدمت *", "r_details": "خپله ستونزه یا غوښتنه تشریح کړئ *", "ph_details": "څه اړتیا لرئ، او وخت یا بودجه څه ده؟", "r_submit": "په WhatsApp غوښتنه ولیږئ", "r_call": "موږ ته زنګ ووهئ", "err_name": "مهرباني وکړئ بشپړ نوم ولیکئ.", "err_details": "مهرباني وکړئ غوښتنه تشریح کړئ ترڅو نرخ برابر کړو.", "r_ready": "ستاسو غوښتنه چمتو ده. لاندې تڼۍ کېکاږئ ترڅو WhatsApp خلاص شي، بیا ولیږئ.", "r_open": "زما غوښتنه په WhatsApp کې خلاصه کړئ", "blog_eyebrow": "بلاګ", "blog_h": "وروستي مقالې", "blog_p": "د AI، برمجه کولو، ډیټابیسونو، کارونو او سوداګریزې ټیکنالوژۍ مقالې.", "blog_empty": "تراوسه هیڅ مقاله خپره شوې نه ده", "blog_empty_p": "نوي مقالې به دلته ښکاره شي.", "faq_eyebrow": "ډېرې پوښتل شوې پوښتنې", "faq_h": "ډېرې پوښتل شوې پوښتنې", "q1": "خدمت څنګه امر کړم؟", "a1": "یو خدمت وټاکئ، غوښتنه ولیږئ، او مخکې له هرې تادیې نرخ ترلاسه کړئ.", "q2": "ایا تادیه خوندي ده؟", "a2": "تادیات زموږ د تادیې ورکوونکي له لارې کیږي. امر یوازې د تادیې له تایید وروسته د تادیه شوي په توګه ثبتیږي.", "q3": "ایا بدلون غوښتلای شم؟", "a3": "هو. د کار له تحویل وروسته کولای شئ بیاکتنه وغواړئ.", "q4": "ایا د AI ځواب تل سم وي؟", "a4": "نه. AI کېدای شي تېروتنه وکړي، نو مهم ځوابونه مخکې له دې چې پرې تکیه وکړئ وګورئ.", "legal_eyebrow": "قانوني", "legal_h": "پالیسۍ", "legal_p": "مسوده: دا پالیسۍ باید د یوه وړ وکیل لخوا وڅیړل شي مخکې له خپرولو.", "lg1": "محرمیت", "lg1d": "موږ یوازې هغه معلومات ساتو چې تاسو راکوئ. موږ هیڅکله د تادیې کارت شمیرې، CVV یا د والټ PIN نه ساتو.", "lg2": "شرایط", "lg2d": "خدمات د تشریح او هغه نرخ سره سم دي چې منئ.", "lg3": "بیرته ورکول", "lg3d": "د بیرته ورکولو غوښتنې د پیسو له بیرته ورکولو دمخه د مدیر لخوا بیاکتل کیږي.", "lg4": "د کارولو قواعد", "lg4d": "زموږ خدمات د غیرقانوني کارونو لپاره مه کاروئ، او پټنومونه یا پټ کلیډونه مه لیږئ.", "f_tag": "ستاسو ستونزې، زموږ هوښیار حلونه.", "f_quick": "چټک لینکونه", "f_help": "مرسته", "f_news": "خبرپاڼه", "f_news_p": "وروستي معلومات او وړاندیزونه ترلاسه کړئ.", "f_email_ph": "بریښنالیک ادرس", "f_sub": "ګډون", "f_thanks": "مننه!", "f_copy": "© ۲۰۲۵ رحماني سلوشنز. ټول حقوق خوندي دي.", "f_privacy": "محرمیت", "f_terms": "شرایط", "f_contact_ph": "د اړیکې معلومات د اړیکې برخې کې ښودل شوي.", "wa_float": "موږ ته WhatsApp وکړئ", "wa_float_msg": "سلام رحماني سلوشنز، زه یوې ستونزې ته اړتیا لرم. مهرباني وکړئ سره اړیکه ونیسئ.", "wa_lead_msg": "سلام عبدالله رحماني، غواړم د رحماني سلوشنز خدماتو په اړه پوښتنه وکړم.", "wa_contact_msg": "سلام رحماني سلوشنز، غواړم له تاسو سره اړیکه ونیسم.", "mail_subj": "د رحماني سلوشنز په اړه پوښتنه", "toast_blocked": "ستاسو براوزر خلاص کېدو مخه نیوله. دلته کېکاږئ، WhatsApp خلاص کړئ:", "toast_open_wa": "WhatsApp خلاص کړئ", "lang_name": "پښتو", "close_panel": "دا برخه وتړئ", "sec_ai": "AI د ستونزو حل‌کوونکی", "sec_req": "د خدمت غوښتنه", "nav_quran": "قرآن", "quran_eyebrow": "د قرآن زده کړه", "quran_h": "قرآن زده کړئ، جزء ۱ تر ۳۰", "quran_p": "یو جزء وټاکئ، یو قاري واوروئ او آیتونه تعقیب کړئ. متن او تلاوت هغه مهال ښکاره کیږي چې وصل شوې سرچینه چمتو شي.", "quran_juz": "جزء", "quran_qari": "قاری", "quran_play": "غږول", "quran_pause": "درېدل", "quran_playall": "جزء غږول", "quran_repeat": "آیت تکرار کړئ", "quran_speed": "سرعت", "quran_nosrc": "د قرآن متن او تلاوت لا وصل نه دي. مدیر باید یوه جواز لرونکی متن او غږیز سرچینه وصل کړي.", "quran_tip": "لومړی واورئ، بیا هر آیت په ژوره غږ تکرار کړئ. هره ورځ لږ آیتونه زده کړئ.", "quran_ayah": "آیت", "quran_search_ph": "جزء ۵، سوره ۵۵، یا 55:1", "quran_search_btn": "ولټوه", "quran_search_help": "جزء N، سوره N، یا سوره:آیت ولیکئ. دا وسیله هغه ځای یادوي چیرې چې ودریدلي یاست.", "quran_bad": "جزء ۱ تر ۳۰، سوره ۱ تر ۱۱۴، یا سوره:آیت لکه 55:1 دننه کړئ.", "quran_resume_h": "هغه ځای ته دوام ورکړئ چېرې چې ودریدلي وئ", "quran_resume_btn": "دوام ورکړئ", "quran_save": "دا ځای خوندي کړئ", "quran_saved": "ځای خوندي شو.", "quran_bm_h": "خوندي شوي ځایونه", "quran_bm_none": "تراوسه هیڅ خوندي ځای نشته.", "quran_rahman_h": "سورت الرحمن (۵۵)", "quran_rahman_p": "دا سورت د لاندې قاریانو له کومه هم واورئ.", "quran_audio_na": "غږیزه سرچینه لا وصل نه ده. د غږولو لپاره باید جواز لرونکې سرچینه وصل شي.", "quran_now": "اوس غږیږي", "quran_stop": "ودروئ", "quran_player_h": "غږونکی", "quran_pos": "جزء {0} · سوره {1} · آیت {2}", "quran_surah_na": "د دې سورت متن د قرآن سرچینې له وصل کیدو وروسته ښکاره کیږي.", "quran_remove": "لرې کړئ", "quran_go_juz": "جزء", "quran_go_surah": "سوره", "quran_step1": "۱. قاری وټاکئ", "quran_step2": "۲. سوره وټاکئ (۱ تر ۱۱۴)", "quran_step3": "۳. غږول ته کېکاږئ", "quran_surah_missing": "د دې قاري د دې سورې غږیز ثبت لا وصل نه دی.", "quran_surah_btn": "سوره وغږوئ", "quran_src_note": "غږونه: Al-Quran Cloud CDN (islamic.network). متن په دې مخکتنه کې نه بارېږي.", "qari_h": "۱. قاری وټاکئ", "sel_h": "۲. سوره یا جزء وټاکئ", "sel_surah": "سوره", "sel_juz": "جزء", "play_h": "۳. غږول", "play_btn": "غږول", "sample_btn": "نمونه واورئ", "sample_note": "نمونه: د سورت الرحمن (۵۵) لومړۍ ۲۰ ثانیې.", "need_server": "د جزء یا آیت غږول د ویب پاڼې له خوا وصل شوي قرآن ډیټا ته اړتیا لري. د سورې غږول د وصل شوو قاریانو لپاره اوس کار کوي.", "pick_surah": "سوره", "pick_juz": "جزء", "now_label": "اوس", "nav_cert": "سند", "cert_eyebrow": "سند", "cert_h": "د بشپړېدو سند جوړ کړئ", "cert_p": "نوم او کورس ولیکئ. سند دلته جوړیږي، تاسو یې چاپ کولی شئ یا د PDF په توګه خوندي کولی شئ.", "cert_name": "بشپړ نوم *", "cert_course": "د کورس یا روزنې نوم *", "cert_date": "نیټه", "cert_org": "ادارې/سازمان (اختیاري)", "cert_btn": "سند جوړ کړئ", "cert_print": "چاپ یا د PDF په توګه خوندي کړئ", "cert_title": "د بشپړېدو سند", "cert_given": "دا تصدیقوي چې", "cert_for": "په بریالیتوب سره بشپړ کړ", "cert_issued": "د رحماني سلوشنز لخوا صادر شوی", "cert_no": "د سند شمېره", "cert_sig": "عبدالله رحماني، اجرایوي رئیس", "cert_note": "سندونه هغه معلومات ښيي چې تاسو ولیکل. د سند شمېرو آنلاین تایید به وروسته شتون ولري، کله چې بشپړه ویب پاڼه د ډیټابیس سره وصل شي.", "cert_need": "مهرباني وکړئ د شرکت نوم، د لوړ مدیر نوم، د کس نوم او کورس ولیکئ.", "cert_photo": "عکس (اختیاري، JPG، PNG یا WebP، تر ۲ MB)", "cert_photo_bad": "مهرباني وکړئ د JPG، PNG یا WebP عکس وټاکئ چې له ۲ MB کم وي.", "cert_photo_note": "عکس ستاسو په وسیله کې پاتې کیږي. هیڅ سرور ته نه لیږل کیږي.", "cert_pick": "عکس وټاکئ", "cert_photo_ok": "عکس چمتو دی. په سند کې به ښکاره شي.", "cert_company": "د شرکت نوم *", "cert_mgr": "د لوړ مدیر نوم *", "cert_mgr_title": "د لوړ مدیر دنده (بیلګه: رئیس)", "cert_sig_up": "د لاسلیک عکس (اختیاري، PNG)", "cert_stamp_up": "د شرکت مهر عکس (اختیاري، PNG)", "cert_upload_ok": "عکس چمتو دی.", "cert_issued_by": "د صادرولو لخوا", "ai_checking": "د AI شتون ازمویل کیږي...", "copy_num": "شمېره کاپي کړئ", "copy_mail": "بریښنالیک کاپي کړئ", "copied": "کاپي شو:", "contact_note": "که زنګ یا بریښنالیک ستاسو اپلیکیشن ونه خلاصوي، کاپي وکېکاږئ او شمېره یا پته پیسټ کړئ."}, "fa": {"nav_home": "خانه", "nav_services": "خدمات", "nav_pricing": "قیمت‌ها", "nav_how": "چگونه کار می‌کند", "nav_about": "درباره ما", "nav_blog": "وبلاگ", "nav_contact": "تماس", "nav_signin": "ورود", "nav_signup": "ثبت‌نام", "menu_open": "باز کردن منو", "menu_close": "بستن منو", "search": "جستجو", "tagline": "مشکلات شما، راه‌حل‌های هوشمند ما.", "hero_badge": "راه‌حل‌های دیجیتال در یک جا", "hero_t1": "مشکلات شما،", "hero_t2": "راه‌حل‌های هوشمند ما.", "hero_lead": "از کمک هوش مصنوعی تا توسعه وب، مدیریت کسب‌وکار و حمایت از دانشجویان، رحمانی سولوشنز به شما کمک می‌کند مشکلات را حل کنید، وقت صرفه‌جویی کنید و به اهداف خود برسید.", "hero_cta1": "همین حالا شروع کنید", "hero_cta2": "خدمات را ببینید", "chip_ai": "دستیار هوش مصنوعی", "chip_ai_s": "راه‌حل در چند ثانیه", "chip_cv": "رزومه و شغل", "chip_cv_s": "سریع‌تر استخدام شوید", "chip_web": "توسعه وب", "chip_web_s": "رویای خود را بسازید", "chip_dig": "خدمات دیجیتال", "chip_dig_s": "طراحی · ترجمه · بیشتر", "chip_biz": "راه‌حل‌های کسب‌وکار", "chip_biz_s": "مدیریت و رشد", "chip_stu": "حمایت از دانشجویان", "chip_stu_s": "یاد بگیرید · حل کنید · موفق شوید", "svc_eyebrow": "خدمات ما", "svc_h": "ما چه کاری برای شما می‌توانیم انجام دهیم؟", "svc_p": "ما طیف گسترده‌ای از خدمات دیجیتال ارائه می‌دهیم تا مشکلات خود را حل کنید، بهره‌وری را افزایش دهید و به اهداف خود برسید.", "svc_ai_n": "حل‌کننده مشکلات با هوش مصنوعی", "svc_ai_d": "با هوش مصنوعی در نوشتن، ترجمه، ایده‌پردازی، تحقیق و بیشتر کمک بگیرید.", "svc_fix_n": "رفع مشکل وب‌سایت", "svc_fix_d": "خطاها را برطرف کنید، عملکرد را بهتر کنید و وب‌سایت خود را به‌روز کنید.", "svc_web_n": "توسعه وب", "svc_web_d": "وب‌سایت، برنامه‌های وب، صفحات فرود و بیشتر، مخصوص شما.", "svc_db_n": "راه‌حل‌های پایگاه داده", "svc_db_d": "سیستم‌های پایگاه داده را طراحی، رفع و مدیریت کنید.", "svc_cv_n": "دستیار رزومه و شغل", "svc_cv_d": "رزومه حرفه‌ای، نامه همراه و درخواست شغل بسازید.", "svc_stu_n": "حل‌کننده مشکلات دانشجویان", "svc_stu_d": "در تکالیف، برنامه‌نویسی، ریاضی و بیشتر کمک بگیرید.", "svc_biz_n": "مدیریت کسب‌وکار", "svc_biz_d": "سیستم برای داروخانه، کلینیک، مدرسه، انبار و حسابداری.", "svc_mkt_n": "بازار خدمات دیجیتال", "svc_mkt_d": "طراحی گرافیک، ترجمه، نگارش محتوا و بیشتر.", "btn_open_ai": "دستیار هوش مصنوعی را باز کنید", "btn_open_cv": "سازنده رزومه را باز کنید", "btn_request": "درخواست خدمت", "how_eyebrow": "روند کار", "how_h": "چگونه کار می‌کند", "how_p": "دریافت راه‌حل آسان است. این مراحل ساده را دنبال کنید.", "how1": "1. مشکل خود را ثبت کنید", "how1d": "مشکل را شرح دهید و در صورت نیاز فایل بارگذاری کنید.", "how2": "2. پیشنهاد قیمت دریافت کنید", "how2d": "درخواست شما را بررسی می‌کنیم و قیمت و زمان تقریبی را ارسال می‌کنیم.", "how3": "3. پرداخت کنید", "how3d": "پس از تأیید پیشنهاد قیمت، از طریق درگاه امن پرداخت کنید.", "how4": "4. روی آن کار می‌کنیم", "how4d": "تیم ما یا ابزارهای هوش مصنوعی روی مشکل شما کار می‌کنند و شما را آگاه نگه می‌دارند.", "how5": "5. راه‌حل خود را دریافت کنید", "how5d": "کار تکمیل‌شده را از داشبورد خود دانلود کنید.", "how6": "6. امتیاز و نظر", "how6d": "نظر خود را بنویسید تا به بهتر شدن ما کمک کنید.", "price_eyebrow": "قیمت‌ها", "price_h": "قیمت‌گذاری ساده و شفاف", "price_p": "طرحی را انتخاب کنید که با نیاز شما مطابقت دارد. قیمت‌ها نمونه‌اند و توسط مدیر قابل تغییرند.", "pl_basic": "پایه", "pl_basic_s": "برای کارهای کوچک", "pl_std": "استاندارد", "pl_std_s": "برای کاربران منظم", "pl_prem": "پریمیوم", "pl_prem_s": "برای حرفه‌ای‌ها و کسب‌وکارها", "pl_mon": "طرح ماهانه", "pl_mon_s": "برای کاربران پرمراجعه", "per_service": "/ خدمت", "per_month": "/ ماه", "popular": "پرطرفدار", "best": "بهترین ارزش", "f_basic1": "پشتیبانی پایه", "f_basic2": "تحویل ۱ روزه", "f_basic3": "پشتیبانی ایمیلی", "f_std1": "پشتیبانی اولویت‌دار", "f_std2": "تحویل سریع‌تر (۱۲ تا ۲۴ ساعت)", "f_std3": "پیوست فایل", "f_prem1": "پشتیبانی VIP", "f_prem2": "تحویل سریع (۶ تا ۱۲ ساعت)", "f_prem3": "بازبینی نامحدود", "f_mon1": "دسترسی به ابزارهای هوش مصنوعی", "f_mon2": "قیمت‌های تخفیفی", "f_mon3": "پشتیبانی اولویت‌دار", "get_started": "شروع کنید", "view_details": "جزئیات را ببینید", "price_note": "اشتراک‌ها پس از پیاده‌سازی و آزمایش پرداخت دوره‌ای فعال می‌شوند.", "why_eyebrow": "چرا ما", "why_h": "چرا رحمانی سولوشنز؟", "why_p": "ما متعهد به ارائه خدمات دیجیتال با کیفیت بالا، قابل اعتماد و مقرون‌به‌صرفه هستیم. رضایت شما اولویت ماست.", "w1": "خدمات حرفه‌ای", "w1d": "ماهر و باتجربه", "w2": "قیمت شفاف", "w2d": "هزینه پنهان ندارد", "w3": "پرداخت امن", "w3d": "امن و قابل اعتماد", "w4": "پشتیبانی مشتری", "w4d": "برای کمک به شما اینجاییم", "ceo_eyebrow": "رهبری ما", "ceo_name": "عبدالله رحمانی", "ceo_title": "مدیر عامل (CEO)", "ceo_p": "رهبری رحمانی سولوشنز در ارائه راه‌حل‌های دیجیتال عملی و مقرون‌به‌صرفه برای مردم، دانشجویان، جویندگان کار و کسب‌وکارها. برای پیشنهاد قیمت، همکاری یا پشتیبانی مستقیماً تماس بگیرید.", "call": "تماس", "email": "ایمیل", "whatsapp": "واتساپ", "test_eyebrow": "نظرات", "test_h": "مشتریان ما چه می‌گویند", "test_empty": "هنوز نظری ثبت نشده", "test_empty_p": "پس از تکمیل سفارش‌ها، نظرات تأییدشده مشتریان اینجا نمایش داده می‌شود.", "cta_h": "آماده حل مشکل بعدی خود هستید؟", "cta_p": "بگویید چه نیاز دارید و یک پیشنهاد قیمت روشن بگیرید.", "cta_contact": "تماس بگیرید", "contact_eyebrow": "تماس", "contact_h": "تماس با رحمانی سولوشنز", "c_wa": "واتساپ", "c_wa_b": "باز کردن واتساپ", "c_call": "تماس", "c_call_b": "هم‌اکنون تماس بگیرید", "c_mail": "ایمیل", "c_mail_b": "ارسال ایمیل", "acc_eyebrow": "حساب کاربری", "acc_h": "ثبت‌نام یا ورود", "tab_signup": "ثبت‌نام", "tab_signin": "ورود", "lbl_email": "ایمیل", "lbl_user": "نام کاربری", "lbl_user_in": "نام کاربری یا ایمیل", "lbl_pass": "رمز عبور (حداقل ۸ نویسه)", "lbl_pass2": "تکرار رمز عبور", "acc_submit_up": "ایجاد حساب", "acc_submit_in": "ورود", "ph_user": "مثال: ahmad_01", "e_email": "یک ایمیل معتبر وارد کنید.", "e_user": "نام کاربری باید ۳ تا ۲۰ حرف، عدد یا خط زیر باشد.", "e_pass": "رمز عبور باید حداقل ۸ نویسه باشد.", "e_match": "رمزهای عبور یکسان نیستند.", "e_signin": "نام کاربری یا ایمیل و رمز عبور را وارد کنید.", "acc_notice": "حساب‌ها در وب‌سایت زنده رحمانی سولوشنز ذخیره می‌شوند که هنوز به این پیش‌نمایش وصل نیست. اینجا چیزی ذخیره نشد.", "cv_eyebrow": "دستیار رزومه و شغل", "cv_h": "رزومه، نامه همراه و درخواست شغل خود را بسازید", "cv_p": "فرم را پر کنید. اسناد فقط از اطلاعات شما ساخته می‌شوند. همه را پیش از ارسال بازبینی کنید.", "f_name": "نام کامل *", "f_job": "عنوان شغلی مورد نظر *", "f_email": "ایمیل", "f_phone": "تلفن", "f_city": "شهر", "f_company": "شرکتی که درخواست می‌دهید (اختیاری)", "f_summary": "خلاصه‌ای درباره خودتان", "f_exp": "سابقه کار (هر شغل در یک خط: سمت | شرکت | سال‌ها | شرح کار)", "f_edu": "تحصیلات (هر مورد در یک خط)", "f_skills": "مهارت‌ها (با ویرگول جدا کنید)", "f_motiv": "چرا این شغل را می‌خواهید (در نامه همراه استفاده می‌شود)", "ph_job": "مثال: مدیر پایگاه داده", "ph_sum": "دو یا سه جمله درباره مهارت‌ها و اهدافتان", "ph_exp": "توسعه‌دهنده پایگاه داده | شرکت ABC | ۲۰۲۱-۲۰۲۴ | ساخت و نگهداری پایگاه داده PostgreSQL", "ph_edu": "لیسانس علوم کامپیوتر، نام دانشگاه، سال", "ph_skills": "SQL، Python، ارتباطات، کار تیمی", "cv_submit": "ساخت رزومه و نامه همراه", "tab_cv": "رزومه", "tab_cl": "نامه همراه", "tab_job": "درخواست شغل", "copy": "کپی متن", "print": "چاپ یا ذخیره به PDF", "cv_need": "لطفاً حداقل نام کامل و عنوان شغلی مورد نظر خود را وارد کنید.", "cv_sum_h": "خلاصه حرفه‌ای", "cv_exp_h": "سابقه کار", "cv_edu_h": "تحصیلات", "cv_skill_h": "مهارت‌ها", "cl_dear": "مدیر محترم استخدام،", "cl_apply": "به منظور درخواست برای سمت {0}{1} نامه می‌نویسم.", "cl_prev": "در سمت قبلی{0}: {1}.", "cl_thanks": "از وقتی که گذاشتید سپاسگزارم. خوشحال می‌شوم درباره چگونگی کمک من به شرکت گفتگو کنیم.", "cl_sincere": "با احترام،", "cl_at": " در", "job_h": "جزئیات درخواست شغل", "job_name": "نام کامل", "job_pos": "سمت درخواستی", "job_co": "شرکت", "job_mail": "ایمیل", "job_ph": "تلفن", "job_city": "شهر", "job_skills": "مهارت‌ها", "job_sum": "خلاصه", "job_work": "سابقه کار", "job_edu": "تحصیلات", "ai_eyebrow": "حل‌کننده مشکلات با هوش مصنوعی", "ai_h": "از دستیار هوش مصنوعی بپرسید", "ai_p": "کمک در نوشتن، ترجمه، خلاصه‌نویسی، ایده‌پردازی، طرح کسب‌وکار، فرمول‌های صفحه‌گسترده، برنامه‌نویسی و SQL. هوش مصنوعی ممکن است اشتباه کند، پس پاسخ‌های مهم را پیش از استفاده بازبینی کنید.", "ai_hello": "سلام. امروز چه مشکلی را می‌توانم حل کنم؟", "ai_ph": "سؤال خود را بنویسید...", "ai_label": "سؤال شما", "ai_send": "ارسال", "ai_new": "گفتگوی جدید", "ai_new_msg": "گفتگوی جدید آغاز شد. در چه چیزی می‌توانم کمک کنم؟", "ai_wa": "به واتساپ بفرستید", "ai_ready": "آماده است. سؤال‌های شما توسط مدل هوش مصنوعی پاسخ داده می‌شود.", "ai_unavail": "دستیار هوش مصنوعی هنوز متصل نیست. مدیر باید کلید هوش مصنوعی را روی سرور اضافه کند.", "ai_thinking": "در حال فکر کردن...", "ai_err": "هوش مصنوعی اکنون نمی‌تواند پاسخ دهد. لطفاً دوباره تلاش کنید.", "ai_rate": "درخواست‌های زیادی ارسال شده. لطفاً کمی صبر کنید و دوباره تلاش کنید.", "ai_denied": "دسترسی به هوش مصنوعی برای این صفحه مجاز نیست.", "ai_ask_first": "ابتدا در چت هوش مصنوعی سؤال بپرسید، سپس آن را به واتساپ بفرستید.", "ai_wa_q": "سؤال از حل‌کننده مشکلات رحمانی با هوش مصنوعی:", "ai_wa_a": "پاسخ هوش مصنوعی:", "req_eyebrow": "درخواست خدمت", "req_h": "درخواست خود را ارسال کنید", "req_p": "یک خدمت را انتخاب کنید و مشکل را شرح دهید. درخواست شما در واتساپ خطاب به رحمانی سولوشنز باز می‌شود. پیش از هر پرداختی پیشنهاد قیمت دریافت می‌کنید.", "r_name": "نام کامل *", "r_phone": "تلفن یا واتساپ", "r_service": "خدمت *", "r_details": "مشکل یا درخواست خود را شرح دهید *", "ph_details": "چه نیاز دارید و مهلت یا بودجه شما چقدر است؟", "r_submit": "ارسال درخواست در واتساپ", "r_call": "با ما تماس بگیرید", "err_name": "لطفاً نام کامل خود را وارد کنید.", "err_details": "لطفاً درخواست خود را شرح دهید تا پیشنهاد قیمت آماده کنیم.", "r_ready": "درخواست شما آماده است. دکمه زیر را بزنید تا واتساپ باز شود، سپس ارسال کنید.", "r_open": "باز کردن واتساپ با درخواست من", "blog_eyebrow": "وبلاگ", "blog_h": "آخرین مقالات", "blog_p": "مقالاتی درباره هوش مصنوعی، برنامه‌نویسی، پایگاه داده، شغل و فناوری کسب‌وکار.", "blog_empty": "هنوز مقاله‌ای منتشر نشده است", "blog_empty_p": "مقالات جدید اینجا نمایش داده می‌شود.", "faq_eyebrow": "پرسش‌های متداول", "faq_h": "سؤالات متداول", "q1": "چگونه خدمتی را سفارش دهم؟", "a1": "خدمت را انتخاب کنید، درخواست بفرستید و پیش از هرگونه پرداخت پیشنهاد قیمت دریافت کنید.", "q2": "آیا پرداخت امن است؟", "a2": "پرداخت‌ها از طریق درگاه پرداخت ما انجام می‌شود. سفارش تنها پس از تأیید پرداخت، پرداخت‌شده ثبت می‌شود.", "q3": "آیا می‌توانم تغییرات درخواست کنم؟", "a3": "بله. پس از تحویل کار می‌توانید بازبینی بخواهید.", "q4": "آیا خروجی هوش مصنوعی همیشه درست است؟", "a4": "نه. هوش مصنوعی ممکن است اشتباه کند، پس پاسخ‌های مهم را پیش از اتکا بازبینی کنید.", "legal_eyebrow": "حقوقی", "legal_h": "سیاست‌ها", "legal_p": "پیش‌نویس: این سیاست‌ها باید پیش از انتشار توسط وکیل صلاحیت‌دار بررسی شود.", "lg1": "حریم خصوصی", "lg1d": "فقط اطلاعاتی را نگه می‌داریم که شما می‌دهید. هرگز شماره کارت، CVV یا PIN کیف پول را ذخیره نمی‌کنیم.", "lg2": "شرایط", "lg2d": "خدمات مطابق توضیح و پیشنهاد قیمتی هستند که می‌پذیرید.", "lg3": "بازپرداخت", "lg3d": "درخواست بازپرداخت پیش از برگشت پول توسط مدیر بررسی می‌شود.", "lg4": "قواعد استفاده", "lg4d": "از خدمات ما برای فعالیت غیرقانونی استفاده نکنید و رمز عبور یا کلید مخفی ارسال نکنید.", "f_tag": "مشکلات شما، راه‌حل‌های هوشمند ما.", "f_quick": "پیوندهای سریع", "f_help": "کمک", "f_news": "خبرنامه", "f_news_p": "آخرین به‌روزرسانی‌ها و پیشنهادها را دریافت کنید.", "f_email_ph": "نشانی ایمیل", "f_sub": "عضویت", "f_thanks": "سپاس!", "f_copy": "© ۲۰۲۵ رحمانی سولوشنز. تمامی حقوق محفوظ است.", "f_privacy": "حریم خصوصی", "f_terms": "شرایط", "f_contact_ph": "اطلاعات تماس در بخش تماس نمایش داده شده است.", "wa_float": "به واتساپ پیام دهید", "wa_float_msg": "سلام رحمانی سولوشنز، به کمک برای یک مشکل نیاز دارم. لطفاً با من تماس بگیرید.", "wa_lead_msg": "سلام عبدالله رحمانی، می‌خواهم درباره خدمات رحمانی سولوشنز بپرسم.", "wa_contact_msg": "سلام رحمانی سولوشنز، می‌خواهم با شما تماس بگیرم.", "mail_subj": "پرسش درباره رحمانی سولوشنز", "toast_blocked": "مرورگر شما باز شدن خودکار را مسدود کرد. برای باز کردن واتساپ اینجا بزنید:", "toast_open_wa": "باز کردن واتساپ", "lang_name": "دری", "close_panel": "بستن این بخش", "sec_ai": "حل‌کننده مشکلات با هوش مصنوعی", "sec_req": "درخواست خدمت", "nav_quran": "قرآن", "quran_eyebrow": "یادگیری قرآن", "quran_h": "یادگیری قرآن، جزء ۱ تا ۳۰", "quran_p": "یک جزء را انتخاب کنید، به قاری گوش دهید و آیات را دنبال کنید. متن و تلاوت وقتی نمایش داده می‌شود که منبع متصل تنظیم شود.", "quran_juz": "جزء", "quran_qari": "قاری", "quran_play": "پخش", "quran_pause": "توقف", "quran_playall": "پخش جزء", "quran_repeat": "تکرار آیه", "quran_speed": "سرعت", "quran_nosrc": "متن و تلاوت قرآن هنوز متصل نیست. مدیر باید یک منبع مجاز متن و صوت قرآن را متصل کند.", "quran_tip": "ابتدا گوش دهید، سپس هر آیه را با صدای بلند تکرار کنید. هر روز چند آیه یاد بگیرید.", "quran_ayah": "آیه", "quran_search_ph": "جزء ۵، سوره ۵۵، یا 55:1", "quran_search_btn": "برو", "quran_search_help": "جزء N، سوره N، یا سوره:آیه را بنویسید. این دستگاه جایی را که توقف کرده‌اید به یاد می‌آورد.", "quran_bad": "جزء ۱ تا ۳۰، سوره ۱ تا ۱۱۴، یا سوره:آیه مانند 55:1 وارد کنید.", "quran_resume_h": "از جایی که توقف کردید ادامه دهید", "quran_resume_btn": "ادامه", "quran_save": "ذخیره این مکان", "quran_saved": "مکان ذخیره شد.", "quran_bm_h": "مکان‌های ذخیره‌شده", "quran_bm_none": "هنوز مکانی ذخیره نشده است.", "quran_rahman_h": "سوره الرحمن (۵۵)", "quran_rahman_p": "این سوره را با هر یک از قاریان زیر گوش دهید.", "quran_audio_na": "منبع صوتی هنوز متصل نیست. برای پخش تلاوت باید یک منبع مجاز متصل شود.", "quran_now": "در حال پخش", "quran_stop": "توقف", "quran_player_h": "پخش‌کننده", "quran_pos": "جزء {0} · سوره {1} · آیه {2}", "quran_surah_na": "متن این سوره پس از اتصال منبع قرآن نمایش داده می‌شود.", "quran_remove": "حذف", "quran_go_juz": "جزء", "quran_go_surah": "سوره", "quran_step1": "۱. قاری را انتخاب کنید", "quran_step2": "۲. سوره را انتخاب کنید (۱ تا ۱۱۴)", "quran_step3": "۳. دکمه پخش را بزنید", "quran_surah_missing": "ضبط این قاری از این سوره هنوز متصل نیست.", "quran_surah_btn": "پخش سوره", "quran_src_note": "فایل‌های صوتی: Al-Quran Cloud CDN (islamic.network). متن در این پیش‌نمایش بارگذاری نمی‌شود.", "qari_h": "۱. قاری را انتخاب کنید", "sel_h": "۲. سوره یا جزء را انتخاب کنید", "sel_surah": "سوره", "sel_juz": "جزء", "play_h": "۳. پخش", "play_btn": "پخش", "sample_btn": "نمونه بشنوید", "sample_note": "نمونه: ۲۰ ثانیه نخست سوره الرحمن (۵۵).", "need_server": "پخش جزء یا آیه به داده‌های قرآن روی وب‌سایت منتشرشده نیاز دارد. پخش سوره برای قاریان متصل هم‌اکنون کار می‌کند.", "pick_surah": "سوره", "pick_juz": "جزء", "now_label": "اکنون", "nav_cert": "گواهی", "cert_eyebrow": "گواهی", "cert_h": "گواهی پایان دوره بسازید", "cert_p": "نام و دوره را وارد کنید. گواهی همین‌جا ساخته می‌شود و می‌توانید آن را چاپ یا به صورت PDF ذخیره کنید.", "cert_name": "نام کامل *", "cert_course": "نام دوره یا آموزش *", "cert_date": "تاریخ", "cert_org": "سازمان (اختیاری)", "cert_btn": "ساخت گواهی", "cert_print": "چاپ یا ذخیره به PDF", "cert_title": "گواهی پایان دوره", "cert_given": "بدین وسیله تأیید می‌شود که", "cert_for": "دوره را با موفقیت به پایان رساند", "cert_issued": "صادرشده توسط رحمانی سولوشنز", "cert_no": "شماره گواهی", "cert_sig": "عبدالله رحمانی، مدیر عامل", "cert_note": "گواهی‌ها اطلاعات واردشده شما را نشان می‌دهند. تأیید آنلاین شماره گواهی‌ها پس از اتصال وب‌سایت کامل با پایگاه داده فعال می‌شود.", "cert_need": "لطفاً نام شرکت، نام مدیر ارشد، نام شخص و دوره را وارد کنید.", "cert_photo": "عکس (اختیاری، JPG، PNG یا WebP، حداکثر ۲ MB)", "cert_photo_bad": "لطفاً عکس JPG، PNG یا WebP کمتر از ۲ MB انتخاب کنید.", "cert_photo_note": "عکس روی دستگاه شما می‌ماند و به سرور ارسال نمی‌شود.", "cert_pick": "انتخاب عکس", "cert_photo_ok": "عکس آماده است. روی گواهی نمایش داده می‌شود.", "cert_company": "نام شرکت *", "cert_mgr": "نام مدیر ارشد *", "cert_mgr_title": "سمت مدیر ارشد (مثال: مدیر)", "cert_sig_up": "تصویر امضا (اختیاری، PNG)", "cert_stamp_up": "تصویر مُهر شرکت (اختیاری، PNG)", "cert_upload_ok": "عکس آماده است.", "cert_issued_by": "صادرکننده", "ai_checking": "در حال بررسی دسترسی به هوش مصنوعی...", "copy_num": "کپی شماره", "copy_mail": "کپی ایمیل", "copied": "کپی شد:", "contact_note": "اگر تماس یا ایمیل برنامه شما را باز نکرد، روی کپی بزنید و شماره یا نشانی را جای‌گذاری کنید."}};
+const WA = "93774620072";
+const PHONE = "+93774620072";
+const EMAIL = "eng.abdullah.rahmani786@gmail.com";
+let lang = "en";
+let statusKey = "ai_unavail";
+let aiSample = null;
+const chat = [];
+
+function t(k){
+  const cur = T[lang] || {};
+  if (cur[k] !== undefined) return cur[k];
+  if (T.en[k] !== undefined) return T.en[k];
+  return k;
+}
+function fmt(s){
+  const args = Array.prototype.slice.call(arguments, 1);
+  return s.replace(/\{(\d)\}/g, function(m, i){ return args[i] !== undefined ? args[i] : ""; });
+}
+function $(id){ return document.getElementById(id); }
+function waUrl(text){ return "https://api.whatsapp.com/send?phone=" + WA + (text ? "&text=" + encodeURIComponent(text) : ""); }
+
+function updateLinks(){
+  document.querySelectorAll("[data-wa]").forEach(function(a){ a.href = waUrl(t(a.getAttribute("data-wa"))); });
+  document.querySelectorAll("[data-mail]").forEach(function(a){ a.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(t("mail_subj")); });
+}
+
+function setLang(l){
+  lang = l;
+  document.documentElement.lang = l;
+  document.documentElement.dir = (l === "en") ? "ltr" : "rtl";
+  document.querySelectorAll("[data-i18n]").forEach(function(el){ el.textContent = t(el.getAttribute("data-i18n")); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){ el.setAttribute("placeholder", t(el.getAttribute("data-i18n-ph"))); });
+  document.querySelectorAll("[data-i18n-aria]").forEach(function(el){ el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria"))); });
+  document.querySelectorAll(".lang-btn").forEach(function(b){ b.setAttribute("aria-pressed", String(b.getAttribute("data-lang") === l)); });
+  updateLinks();
+  setStatus(statusKey);
+  if (window.quranLangChange) window.quranLangChange();
+  $("menuBtn").setAttribute("aria-label", t("menu_open"));
+}
+
+function setStatus(k){ statusKey = k; $("aiStatus").textContent = t(k); }
+
+function toastHTML(html){
+  let el = $("toast");
+  if (!el){
+    el = document.createElement("div");
+    el.id = "toast";
+    el.setAttribute("role", "status");
+    document.body.appendChild(el);
+  }
+  el.innerHTML = html;
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); }, 20000);
+}
+function openWA(text){
+  toastHTML(t("toast_blocked") + ' <a href="' + waUrl(text) + '" target="_blank" rel="noopener">' + t("toast_open_wa") + '</a>');
+}
+
+/* navigation */
+$("menuBtn").addEventListener("click", function(){
+  const m = $("mnav");
+  const open = m.classList.toggle("open");
+  this.setAttribute("aria-expanded", String(open));
+});
+document.querySelectorAll(".lang-btn").forEach(function(b){
+  b.addEventListener("click", function(){ setLang(b.getAttribute("data-lang")); });
+});
+
+/* panels: open from cards, close with X */
+function openPanel(id){
+  const el = $(id);
+  if (el && el.hasAttribute("data-panel")) el.hidden = false;
+}
+document.addEventListener("click", function(e){
+  const close = e.target.closest("[data-close]");
+  if (close){
+    const panel = close.closest("[data-panel]");
+    if (panel) panel.hidden = true;
+    const home = $("services");
+    if (home) home.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+  const link = e.target.closest('a[href^="#"]');
+  if (link){
+    const id = link.getAttribute("href").slice(1);
+    openPanel(id);
+    const svc = link.getAttribute("data-svc");
+    if (svc !== null && $("r_service")) $("r_service").value = svc;
+  }
+});
+
+/* reveal on scroll */
+const io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){
+    if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach(function(el, i){
+  el.style.transitionDelay = ((i % 4) * 70) + "ms";
+  io.observe(el);
+});
+
+/* CV and cover letter */
+function ls(s){ return s.split(String.fromCharCode(10)).map(function(x){ return x.trim(); }).filter(Boolean); }
+function buildDocs(v){
+  const NL = String.fromCharCode(10);
+  const exp = ls(v.exp).map(function(l){ return l.split("|").map(function(x){ return x.trim(); }); });
+  const edu = ls(v.edu);
+  const skills = v.skills.split(",").map(function(x){ return x.trim(); }).filter(Boolean);
+  const contact = [v.email, v.phone, v.city].filter(Boolean).join(" | ");
+
+  const cv = [v.name.toUpperCase(), v.job];
+  if (contact) cv.push(contact);
+  cv.push("");
+  if (v.summary){ cv.push(t("cv_sum_h"), v.summary, ""); }
+  if (exp.length){
+    cv.push(t("cv_exp_h"));
+    exp.forEach(function(p){
+      cv.push((p[0] || "") + (p[1] ? " - " + p[1] : "") + (p[2] ? " (" + p[2] + ")" : ""));
+      if (p[3]) cv.push("  " + p[3]);
+    });
+    cv.push("");
+  }
+  if (edu.length){ cv.push(t("cv_edu_h")); edu.forEach(function(x){ cv.push(x); }); cv.push(""); }
+  if (skills.length){ cv.push(t("cv_skill_h"), skills.join(", ")); }
+
+  const co = v.company ? t("cl_at") + v.company : "";
+  const cl = [t("cl_dear"), ""];
+  cl.push(fmt(t("cl_apply"), v.job, co));
+  if (v.summary) cl.push(v.summary);
+  if (exp[0]){
+    const r = exp[0];
+    cl.push(fmt(t("cl_prev"), r[1] ? t("cl_at") + r[1] : "", r[3] || ""));
+  }
+  if (v.motiv) cl.push(v.motiv);
+  cl.push("", t("cl_thanks"), "", t("cl_sincere"), v.name);
+  if (contact) cl.push(contact);
+
+  const dash = "-";
+  const job = [t("job_h"),
+    t("job_name") + ": " + v.name,
+    t("job_pos") + ": " + v.job,
+    t("job_co") + ": " + (v.company || dash),
+    t("job_mail") + ": " + (v.email || dash),
+    t("job_ph") + ": " + (v.phone || dash),
+    t("job_city") + ": " + (v.city || dash),
+    t("job_skills") + ": " + (skills.join(", ") || dash),
+    t("job_sum") + ": " + (v.summary || dash), "", t("job_work") + ":"];
+  if (exp.length){ exp.forEach(function(p){ job.push("- " + (p[0] || "") + (p[1] ? " - " + p[1] : "") + (p[2] ? " (" + p[2] + ")" : "") + (p[3] ? ": " + p[3] : "")); }); }
+  else job.push(dash);
+  if (edu.length){ job.push("", t("job_edu") + ":"); edu.forEach(function(x){ job.push("- " + x); }); }
+
+  return { cv: cv.join(NL), cl: cl.join(NL), job: job.join(NL) };
+}
+let docs = {};
+function showDoc(k){
+  document.querySelectorAll("#cvResult [data-doc]").forEach(function(b){ b.setAttribute("aria-selected", String(b.getAttribute("data-doc") === k)); });
+  $("docOut").textContent = docs[k] || "";
+}
+$("cvForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const v = {
+    name: $("f_name").value.trim(), job: $("f_job").value.trim(), email: $("f_email").value.trim(),
+    phone: $("f_phone").value.trim(), city: $("f_city").value.trim(), company: $("f_company").value.trim(),
+    summary: $("f_summary").value.trim(), exp: $("f_exp").value, edu: $("f_edu").value,
+    skills: $("f_skills").value, motiv: $("f_motiv").value.trim()
+  };
+  $("cvResult").hidden = false;
+  if (!v.name || !v.job){ $("cvErr").textContent = t("cv_need"); docs = { cv: t("cv_need") }; showDoc("cv"); return; }
+  $("cvErr").textContent = "";
+  docs = buildDocs(v);
+  showDoc("cv");
+  $("cvResult").scrollIntoView({ behavior: "smooth", block: "start" });
+});
+document.querySelectorAll("#cvResult [data-doc]").forEach(function(b){
+  b.addEventListener("click", function(){ showDoc(b.getAttribute("data-doc")); });
+});
+$("copyBtn").addEventListener("click", function(){ if (navigator.clipboard) navigator.clipboard.writeText($("docOut").textContent); });
+$("printBtn").addEventListener("click", function(){ window.print(); });
+
+/* AI assistant (uses the platform's sample capability when available) */
+const aiSend = $("aiSend");
+function setAiEnabled(on){ aiSend.disabled = !on; $("aiInput").disabled = !on; }
+setAiEnabled(true);
+setStatus("ai_checking");
+fetch("/api/ai", { signal: AbortSignal.timeout(8000) }).then(function(r){ return r.json(); }).then(function(j){
+  setStatus(j && j.configured ? "ai_ready" : "ai_unavail");
+}).catch(function(){
+  if (!(window.claude && window.claude.use)) setStatus("ai_unavail");
+});
+if (window.claude && window.claude.use){
+  window.claude.use("sample").then(function(s){
+    aiSample = s;
+    if (s){ setAiEnabled(true); setStatus("ai_ready"); }
+    else { setStatus("ai_unavail"); }
+  }).catch(function(){ setStatus("ai_unavail"); });
+}
+function bubble(role, text){
+  const d = document.createElement("div");
+  d.className = "m " + role;
+  d.textContent = text;
+  $("aiMsgs").appendChild(d);
+  $("aiMsgs").scrollTop = $("aiMsgs").scrollHeight;
+  return d;
+}
+function buildPrompt(){
+  const instructions = "You are the AI Problem Solver of Rahmani Solutions. Help with writing, translation, summarizing, ideas, business planning, spreadsheet formulas, programming, and SQL explanations. Be clear and practical. Say when a result should be reviewed by a human. Do not invent facts, credentials, or customer details. Reply in the language the user writes in.";
+  const convo = chat.slice(-12).map(function(m){ return (m.role === "u" ? "User: " : "Assistant: ") + m.text; }).join(String.fromCharCode(10));
+  return instructions + String.fromCharCode(10, 10) + "Conversation so far:" + String.fromCharCode(10) + convo + String.fromCharCode(10, 10) + "Answer the latest user message.";
+}
+function askAI(prompt){
+  // 1) Our server (Vercel). 2) If the server is not there (preview), the built-in AI when it is available.
+  return fetch("/api/ai", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ prompt: prompt })
+  }).then(function(r){
+    if (r.status === 404) return { missing: true };
+    return r.json().catch(function(){ return {}; }).then(function(j){
+      if (r.ok && j.text) return { text: j.text };
+      return { error: j.error || t("ai_err") };
+    });
+  }).catch(function(){
+    return { missing: true };
+  }).then(function(res){
+    if (res.text) return res.text;
+    if (res.error) throw { msg: res.error };
+    if (aiSample){
+      return aiSample(prompt, { modelTier: "default" }).then(function(x){
+        if (x && x.text) return x.text;
+        throw { msg: t("ai_err") };
+      });
+    }
+    throw { msg: t("ai_unavail") };
+  });
+}
+$("aiForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const q = $("aiInput").value.trim();
+  if (!q) return;
+  $("aiInput").value = "";
+  chat.push({ role: "u", text: q });
+  bubble("u", q);
+  const out = bubble("a", t("ai_thinking"));
+  setAiEnabled(false);
+  askAI(buildPrompt()).then(function(txt){
+    out.textContent = txt;
+    chat.push({ role: "a", text: txt });
+  }).catch(function(err){
+    out.textContent = (err && err.msg) || t("ai_err");
+    chat.pop();
+  }).finally(function(){ setAiEnabled(true); $("aiInput").focus(); });
+});
+$("aiInput").addEventListener("keydown", function(e){
+  if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); $("aiForm").requestSubmit(); }
+});
+$("aiNew").addEventListener("click", function(){
+  chat.length = 0;
+  $("aiMsgs").innerHTML = "";
+  bubble("a", t("ai_new_msg"));
+});
+
+
+/* service request: builds a WhatsApp link the user taps */
+$("reqForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const name = $("r_name").value.trim();
+  const phone = $("r_phone").value.trim();
+  const sel = $("r_service");
+  const service = sel.options[sel.selectedIndex].textContent;
+  const details = $("r_details").value.trim();
+  const msg = $("reqMsg");
+  msg.textContent = "";
+  if (!name){ msg.textContent = t("err_name"); $("r_name").focus(); return; }
+  if (!details){ msg.textContent = t("err_details"); $("r_details").focus(); return; }
+  const NL = String.fromCharCode(10);
+  const text = "New service request - Rahmani Solutions" + NL + "Service: " + service + NL + "Name: " + name + NL + "Phone: " + (phone || "-") + NL + NL + details;
+  const url = waUrl(text);
+  msg.innerHTML = "";
+  const box = document.createElement("div");
+  box.style.cssText = "display:flex;flex-direction:column;gap:8px;margin-top:4px";
+  const p = document.createElement("p");
+  p.textContent = t("r_ready");
+  const a = document.createElement("a");
+  a.href = url; a.target = "_blank"; a.rel = "noopener";
+  a.className = "btn btn-wa";
+  a.textContent = t("r_open");
+  box.appendChild(p); box.appendChild(a);
+  msg.appendChild(box);
+});
+
+/* account form: honest preview; nothing is stored here */
+let acMode = "signup";
+function setAcMode(m){
+  acMode = m;
+  const up = m === "signup";
+  $("acSignupTab").setAttribute("aria-pressed", String(up));
+  $("acSigninTab").setAttribute("aria-pressed", String(!up));
+  $("acEmailRow").hidden = !up;
+  $("acConfirmRow").hidden = !up;
+  $("ac_userLabel").textContent = up ? t("lbl_user") : t("lbl_user_in");
+  $("acSubmit").textContent = up ? t("acc_submit_up") : t("acc_submit_in");
+  $("acMsg").textContent = "";
+}
+$("acSignupTab").addEventListener("click", function(){ setAcMode("signup"); });
+$("acSigninTab").addEventListener("click", function(){ setAcMode("signin"); });
+$("acForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const msg = $("acMsg");
+  const user = $("ac_user").value.trim();
+  const pass = $("ac_pass").value;
+  if (acMode === "signup"){
+    const email = $("ac_email").value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ msg.textContent = t("e_email"); return; }
+    if (!/^[a-zA-Z0-9_]{3,20}$/.test(user)){ msg.textContent = t("e_user"); return; }
+    if (pass.length < 8){ msg.textContent = t("e_pass"); return; }
+    if ($("ac_pass2").value !== pass){ msg.textContent = t("e_match"); return; }
+  } else {
+    if (!user || !pass){ msg.textContent = t("e_signin"); return; }
+  }
+  msg.textContent = t("acc_notice");
+});
+
+/* newsletter: honest, nothing is sent from this preview */
+$("newsForm").addEventListener("submit", function(e){
+  e.preventDefault();
+  const b = this.querySelector("button");
+  b.textContent = t("f_thanks");
+});
+
+
+
+
+/* quran: audio comes only from the verified sources configured below */
+const QURAN_CONFIG = {
+  // Verified surah-level recordings (Al-Quran Cloud CDN, documented pattern).
+  // Confirm written permission for your use of these recordings before launch.
+  audio: {
+    alafasy: { "55": "https://cdn.islamic.app/quran/audio-surah/ar.alafasy/55.mp3" },
+    ghamdi:  { "55": "https://cdn.islamic.app/quran/audio-surah/ar.saadalghamdi/55.mp3" }
+  },
+  reciters: [
+    { id: "alafasy", name: "Mishary Rashid Alafasy" },
+    { id: "basit", name: "Abdul Basit Abdus Samad" },
+    { id: "sudais", name: "Abdurrahman As-Sudais" },
+    { id: "ghamdi", name: "Saad Al-Ghamdi" },
+    { id: "husary", name: "Mahmoud Khalil Al-Husary" }
+  ]
+};
+let selQari = "alafasy";
+let sampleTimer = null;
+const player = $("qPlayer");
+const samplePlayer = new Audio();
+const now = $("qNow");
+
+function audioUrl(qari, surah){
+  return (QURAN_CONFIG.audio[qari] || {})[String(surah)] || null;
+}
+function qariName(id){
+  const r = QURAN_CONFIG.reciters.filter(function(x){ return x.id === id; })[0];
+  return r ? r.name : id;
+}
+function setMode(mode){
+  $("qSurahSel").hidden = mode !== "surah";
+  $("qJuzSel").hidden = mode !== "juz";
+  now.textContent = "";
+}
+function currentMode(){
+  const r = document.querySelector('input[name="qMode"]:checked');
+  return r ? r.value : "surah";
+}
+
+/* step 1: qari buttons, each with a 20-second sample */
+function renderQaris(){
+  const box = $("qariBtns");
+  box.innerHTML = "";
+  QURAN_CONFIG.reciters.forEach(function(r){
+    const wrap = document.createElement("div");
+    wrap.style.cssText = "display:flex;gap:6px;flex-wrap:wrap";
+    const pick = document.createElement("button");
+    pick.type = "button";
+    pick.className = "btn btn-sm " + (selQari === r.id ? "btn-primary" : "btn-line");
+    pick.textContent = r.name;
+    pick.setAttribute("aria-pressed", String(selQari === r.id));
+    pick.addEventListener("click", function(){ selQari = r.id; renderQaris(); now.textContent = qariName(r.id); });
+    const sample = document.createElement("button");
+    sample.type = "button";
+    sample.className = "btn btn-line btn-sm";
+    sample.textContent = "▶ " + t("sample_btn");
+    sample.addEventListener("click", function(){ playSample(r.id); });
+    wrap.appendChild(pick); wrap.appendChild(sample);
+    box.appendChild(wrap);
+  });
+}
+function playSample(qari){
+  const url = audioUrl(qari, 55);
+  clearTimeout(sampleTimer);
+  player.pause();
+  if (!url){ now.textContent = t("quran_surah_missing"); return; }
+  samplePlayer.src = url;
+  samplePlayer.currentTime = 0;
+  samplePlayer.play().catch(function(){ now.textContent = t("quran_audio_na"); });
+  sampleTimer = setTimeout(function(){ samplePlayer.pause(); }, 20000);
+  now.textContent = qariName(qari) + " · " + t("sample_btn");
+}
+
+/* step 2: surah 1-114 and juz 1-30 */
+function fillSelects(){
+  const sSel = $("qSurahSel"), jSel = $("qJuzSel");
+  const sVal = sSel.value || "55", jVal = jSel.value || "1";
+  sSel.innerHTML = ""; jSel.innerHTML = "";
+  for (let i = 1; i <= 114; i++){
+    const o = document.createElement("option");
+    o.value = String(i); o.textContent = t("pick_surah") + " " + i;
+    sSel.appendChild(o);
+  }
+  for (let i = 1; i <= 30; i++){
+    const o = document.createElement("option");
+    o.value = String(i); o.textContent = t("pick_juz") + " " + i;
+    jSel.appendChild(o);
+  }
+  sSel.value = sVal; jSel.value = jVal;
+}
+document.querySelectorAll('input[name="qMode"]').forEach(function(r){
+  r.addEventListener("change", function(){ setMode(currentMode()); });
+});
+
+/* step 3: play the chosen surah or juz */
+$("qPlay").addEventListener("click", function(){
+  clearTimeout(sampleTimer);
+  samplePlayer.pause();
+  if (currentMode() === "juz"){
+    player.removeAttribute("src");
+    now.textContent = t("need_server");
+    return;
+  }
+  const n = parseInt($("qSurahSel").value, 10);
+  const url = audioUrl(selQari, n);
+  if (!url){
+    player.removeAttribute("src");
+    now.textContent = qariName(selQari) + " · " + t("pick_surah") + " " + n + " · " + t("quran_surah_missing");
+    return;
+  }
+  now.textContent = qariName(selQari) + " · " + t("pick_surah") + " " + n;
+  player.src = url;
+  player.playbackRate = 1;
+  player.play().catch(function(){ now.textContent = t("quran_audio_na"); });
+});
+
+/* certificate: landscape, company-issued, uploaded images only */
+(function(){
+  const uploads = { p: { url: "", promise: null }, sg: { url: "", promise: null }, st: { url: "", promise: null } };
+  function readImage(f, outType){
+    return new Promise(function(resolve, reject){
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = function(){
+        const img = new Image();
+        img.onerror = reject;
+        img.onload = function(){
+          const max = 600;
+          const scale = Math.min(1, max / Math.max(img.width, img.height));
+          const c = document.createElement("canvas");
+          c.width = Math.max(1, Math.round(img.width * scale));
+          c.height = Math.max(1, Math.round(img.height * scale));
+          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+          resolve(c.toDataURL(outType, 0.92));
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(f);
+    });
+  }
+  function setupUpload(key, outType){
+    const btn = $("c_pick_" + key), inp = $("c_file_" + key), nm = $("c_name_" + key), pv = $("c_prev_" + key);
+    btn.addEventListener("click", function(){ inp.click(); });
+    inp.addEventListener("change", function(){
+      const f = this.files && this.files[0];
+      uploads[key] = { url: "", promise: null };
+      pv.hidden = true; nm.textContent = "";
+      if (!f) return;
+      if (!/^image\/(jpeg|png|webp)$/.test(f.type) || f.size > 2 * 1024 * 1024){
+        $("certErr").textContent = t("cert_photo_bad");
+        this.value = "";
+        return;
+      }
+      $("certErr").textContent = "";
+      nm.textContent = f.name;
+      uploads[key].promise = readImage(f, outType).then(function(url){
+        uploads[key].url = url;
+        pv.src = url; pv.hidden = false;
+        nm.textContent = f.name + " · " + t("cert_upload_ok");
+      }).catch(function(){
+        $("certErr").textContent = t("cert_photo_bad");
+      });
+    });
+  }
+  setupUpload("p", "image/jpeg");
+  setupUpload("sg", "image/png");
+  setupUpload("st", "image/png");
+
+  $("c_date").value = new Date().toISOString().slice(0, 10);
+  function randomCode(){
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    const bytes = new Uint32Array(5);
+    crypto.getRandomValues(bytes);
+    let out = "";
+    for (let i = 0; i < 5; i++) out += chars[bytes[i] % chars.length];
+    return out;
+  }
+  function el(tag, cls, text){
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+
+  $("certForm").addEventListener("submit", async function(e){
+    e.preventDefault();
+    const company = $("c_company").value.trim();
+    const mgr = $("c_mgr").value.trim();
+    const mgrTitle = $("c_mgr_t").value.trim();
+    const name = $("c_name").value.trim();
+    const course = $("c_course").value.trim();
+    const date = $("c_date").value || new Date().toISOString().slice(0, 10);
+    if (!company || !mgr || !name || !course){ $("certErr").textContent = t("cert_need"); return; }
+    $("certErr").textContent = "";
+    for (const k of ["p", "sg", "st"]){
+      if (uploads[k].promise) await uploads[k].promise;
+    }
+
+    const no = "RS-" + date.replace(/-/g, "") + "-" + randomCode();
+    const box = $("certOut");
+    box.innerHTML = "";
+
+    box.appendChild(el("div", "c-company", company));
+    box.appendChild(el("div", "c-title", t("cert_title")));
+
+    const mid = el("div", "c-mid");
+    if (uploads.p.url){
+      const ph = el("img", "c-photo");
+      ph.src = uploads.p.url; ph.alt = "";
+      mid.appendChild(ph);
+    }
+    const text = el("div", "c-text");
+    text.appendChild(el("div", "c-given", t("cert_given")));
+    text.appendChild(el("div", "c-name", name));
+    text.appendChild(el("div", "c-given", t("cert_for")));
+    text.appendChild(el("div", "c-course", course));
+    text.appendChild(el("div", "c-date", date));
+    mid.appendChild(text);
+    box.appendChild(mid);
+
+    const foot = el("div", "c-foot");
+    const sig = el("div", "c-sig");
+    if (uploads.sg.url){
+      const si = el("img"); si.src = uploads.sg.url; si.alt = "";
+      sig.appendChild(si);
+    }
+    sig.appendChild(el("div", "c-line", mgr + (mgrTitle ? " · " + mgrTitle : "")));
+    foot.appendChild(sig);
+
+    const stamp = el("div", "c-stamp");
+    if (uploads.st.url){
+      const st = el("img"); st.src = uploads.st.url; st.alt = "";
+      stamp.appendChild(st);
+    }
+    foot.appendChild(stamp);
+
+    const right = el("div", "");
+    right.appendChild(el("div", "c-no", t("cert_no") + ": " + no));
+    right.appendChild(el("div", "c-issued", t("cert_issued_by") + " " + company));
+    foot.appendChild(right);
+    box.appendChild(foot);
+
+    $("certWrap").hidden = false;
+    $("certWrap").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+  $("certPrint").addEventListener("click", function(){ window.print(); });
+})();
+
+window.quranLangChange = function(){
+  fillSelects();
+  renderQaris();
+};
+fillSelects();
+renderQaris();
+
+/* keep the floating WhatsApp button away from the open panels (it covered the Send button on phones) */
+(function(){
+  const waBtn = document.querySelector(".wa-float");
+  const open = new Set();
+  const panelIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) open.add(en.target); else open.delete(en.target);
+    });
+    waBtn.classList.toggle("wa-hide", open.size > 0);
+  }, { threshold: 0.15 });
+  ["cv-tool", "ai-tool", "svc-request"].forEach(function(id){ panelIO.observe($(id)); });
+})();
+/* copy buttons for call and email (work on every device) */
+document.addEventListener("click", function(e){
+  const b = e.target.closest("[data-copy]");
+  if (!b) return;
+  const value = b.getAttribute("data-copy");
+  const done = function(){ toastHTML(t("copied") + " " + value); };
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(value).then(done, function(){ toastHTML(value); });
+  } else {
+    toastHTML(value);
+  }
+});
+setLang("en");
+setAcMode("signup");
+</script>
+</body>
+</html>
